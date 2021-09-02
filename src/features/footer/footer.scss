@@ -112,14 +112,71 @@ $fontLarge: 'Heebo', sans-serif;
   font-weight: bold;
 }
 
-//Responsive Tab
+//Responsive Tablet
 
 @media screen and (max-width: 992px) {
   .footer-tab {
-    text-align: center;
+    text-align: center !important;
+  }
+  
+  .footer-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-input, .footer-btn {
+    width: 75%;
+    margin-right: auto !important;
+  }
+
+  .footer-address-section {
+    top: -75px;
+  }
+
+  .footer-address-section .icons {
+    text-align: center !important;
+    padding-right: 1rem !important;
+  }
+
+  .footer-address-section .content {
+    text-align: center !important;
   }
 }
 
 // Responsive Mobile
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+  .footer-address-section {
+    top: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: 0 5px 5px $grey;
+  }
+
+  .footer-tab {
+    margin-top: 6% !important;
+  }
+
+  .footer-mid-section {
+    padding-bottom: 0 !important;
+  }
+
+  .footer-input, .footer-btn {
+    width: 55%;
+  }
+
+  .terms-responsive {
+    text-align: center !important;
+    padding-bottom: 1%;
+  }
+
+  .vertical-line {
+    border-right: none !important;
+  }
+
+  .icons {
+    text-align: center !important;
+  }
+}
