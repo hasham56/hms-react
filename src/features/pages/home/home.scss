@@ -1,0 +1,595 @@
+$white: #fff;
+$grey: #e9e9e9;
+$darkGrey: #7C7E93;
+$main: #2e95a0;
+$light: #00acb1;
+$dark: #005963;
+$purplish: #fcf7ff;
+$fontSmall: 'Rubik', sans-serif;
+$fontLarge: 'Heebo', sans-serif;
+
+// Homepage
+
+.home {
+    width: 100%;
+  }
+  
+// Homepage Counter Section
+
+.counter {
+  position: relative;
+}
+
+.counter .counter-image {
+  width: 100%;
+}
+
+.counter .services {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  border-radius: 8px;
+  padding: 65px 45px 65px 45px;
+}
+
+.counter .counters {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.counter .services-main-text {
+  font-size: 30pt;
+  margin-bottom: 1em;
+}
+
+.counter .services-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  padding-left: 20px !important;
+  padding-right: 10px !important;
+}
+
+.counter .services-text {
+  margin-bottom: 0.5em;
+}
+
+.counter .services-text-portion {
+  padding-left: 30px !important;
+}
+
+.counter .services-blocks {
+  box-shadow: 0 0 20px $grey;
+  width: 65%;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.counter .services-images {
+  display: unset !important;
+}
+
+.counter .counters-value-text {
+  font-size: 30pt;
+  font-family: $fontLarge;
+  margin-bottom: 0px;
+  line-height: 1;
+}
+
+.counter .counter-blocks {
+  position: relative;
+}
+
+.counter .counter-images {
+  width: 75%;
+  padding: 15px 15px 5px 15px;
+  position: relative;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+// Homepage Information
+
+.information {
+  padding: 8% 0 8% 0;
+  background-color: $white;
+}
+
+.information #group-image {
+  width: 90%;
+}
+
+.information #content {
+  position: relative;
+}
+
+.information #detail {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+}
+
+.information .title {
+  font-size: 45pt;
+  margin-bottom: 10px;
+}
+
+.information .button {
+  padding-left: 20px !important;
+  padding-right: 10px !important;
+}
+
+.information .heading {
+  font-size: 12pt;
+}
+
+.information .description {
+  color: $darkGrey;
+  margin-right: 3%;
+  margin-bottom: 10%;
+}
+
+// Homepage Team
+
+.team {
+  padding: 6% 0 13% 0;
+}
+
+.team .mini-heading {
+  color: $light;
+  margin-bottom: 0;
+}
+
+.team .main-heading {
+  margin-bottom: 0.75em;
+}
+
+.team .teammember .image {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team .teammember .detail {
+  position: absolute;
+  top: 92.5%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  background-color: $white;
+  border-radius: 5px;
+  width: 70%;
+  padding: 5% 0 3% 0;
+  box-shadow: 0 0 20px $grey;
+}
+
+.team .teammember .detail .name {
+  margin-bottom: 0.25em;
+}
+
+.team .teammember .detail .designation {
+  color: $main;
+  font-size: 11pt;
+  margin-bottom: 0.65em;
+}
+
+.team .teammember .detail .icons {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.team .teammember .detail .icon-holder {
+  padding-left: 0.65em;
+}
+
+.team .teammember .detail .social-icons {
+  color: $dark !important;
+  background-color: $purplish !important;
+  font-size: 11.5pt;
+}
+
+.team .teammember .detail .social-icons:hover {
+  color: $white !important;
+  background-color: $dark !important;
+  cursor: pointer;
+  transition: background 1s ease;
+}
+
+// Homepage Services
+
+.services {
+  position: relative;
+}
+
+.services .services-image {
+  width: 100%;
+  height: 120%;
+}
+
+.services .services-content {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: 8px;
+  padding: 6% 0 8% 0;
+}
+
+.services .mini-heading {
+  color: $white;
+  margin: 0;
+}
+
+.services .main-heading {
+  color: $white;
+  margin-bottom: 0.75em;
+}
+
+.services .service {
+  background-color: $white;
+  border-radius: 5px;
+  padding: 10% 0 7% 0;
+}
+
+.services .service:hover {
+  box-shadow: 0 0 10px $grey;
+  transition: box-shadow 0.5s ease;
+}
+
+.services .service .icon {
+  display: unset !important;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+.services .service .detail {
+  padding-left: 5% !important;
+  padding-right: 10% !important;
+}
+
+.services .service .heading {
+  margin-bottom: 0.70em;
+}
+
+// Homepage Reviews
+
+.reviews {
+  padding: 6% 0 15% 0;
+}
+
+.reviews .mini-heading {
+  color: $light;
+  margin-bottom: 0;
+}
+
+.reviews .main-heading {
+  margin-bottom: 0.75em;
+}
+
+.reviews .review {
+  background-color: $white;
+  padding: 10% 5% 10% 0%;
+}
+
+.reviews .review:hover {
+  box-shadow: 0 0 20px $grey;
+  transition: box-shadow 0.5s ease;
+}
+
+.reviews .review .content {
+  display: flex;
+}
+
+.reviews .review .detail {
+  width: 50%;
+  padding: 2% 0% 0% 6%;
+}
+
+.reviews .review .vertical-line {
+  width: 1%;
+  background-color: $light;
+  border-radius: 25px;
+}
+
+.reviews .review .image-holder {
+  padding-left: 5.5%;
+  position: relative;
+}
+
+.reviews .review .client-picture {
+  margin-bottom: 0 !important;
+}
+
+.reviews .review .client-name {
+  font-size: 13pt;
+  margin-bottom: 0.5em;
+  color: #000;
+}
+
+.reviews .review .client-designation {
+  font-size: 11pt;
+  color: $darkGrey;
+}
+
+.reviews .review .description {
+  padding: 5% 0% 0% 9%;
+}
+
+.reviews .review .content .quotes {
+  color: $white !important;
+  background-color: $light !important;
+  font-size: 11.5pt;
+  position: absolute;
+  top: 70%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+
+// Homepage Contact Form
+
+.contact-form {
+  background-color: $white;
+  position: relative;
+}
+
+// ContactForm NewsLetter
+
+.contact-form .news-letter {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $dark;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.contact-form .news-letter #image {
+  border-radius: 5px;
+}
+
+.contact-form .news-letter .content {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  display: flex;
+  padding: 0 10%;
+}
+
+.contact-form .news-letter .content .heading {
+  color: $white;
+  font-size: 20pt;
+}
+
+.contact-form .news-letter .input {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0%, -50%);
+  display: flex;
+  padding: 0 10%;
+  width: 75%;
+}
+
+.contact-form .news-letter .input .input-feild {
+  border: 2px solid $white;
+  background-color: transparent;
+  font-size: 11pt;
+  padding: 3.5% 5%;
+  color: $white;
+}
+
+.contact-form .news-letter .input .input-feild:focus {
+  border: 2px solid $white !important;
+  color: $white;
+  box-shadow: 0 0 10px $grey;
+}
+
+.contact-form .news-letter .input .input-feild::selection {
+  color: $white;
+  background-color: $light;
+}
+
+.contact-form .news-letter .input .input-feild::placeholder {
+  color: $grey;
+}
+
+.contact-form .news-letter .input #subscrite-btn {
+  border-radius: 0;
+  background-color: $white;
+  color: $main;
+}
+
+.contact-form .news-letter .input #subscrite-btn:hover {
+  background-color: $light;
+  color: $white;
+  box-shadow: 0 0 2px $grey;
+}
+
+.contact-form .news-letter .input .subscrite-btn #icon {
+  color: #000049;
+}
+
+// ContactForm MessagePortion
+
+.contact-form .message-portion .image-holder {
+  position: relative;
+  width: 132%;
+}
+
+.contact-form .message-portion #image {
+  position: absolute;
+  transform: translateY(-17%);
+  z-index: 1;
+}
+
+.contact-form .message-portion {
+  padding: 20% 0 1% 0;
+  display: flex;
+}
+
+.contact-form .message-portion #group-image {
+  position: absolute;
+}
+
+.contact-form .message-portion .content {
+  background-color: $light;
+  border-radius: 10px;
+  padding: 5% 5% 5% 15% !important;
+}
+
+.contact-form .message-portion .content .heading {
+  color: $white;
+  margin-bottom: 0;
+}
+
+.contact-form .message-portion .content .subheading {
+  color: $grey;
+}
+
+.contact-form .message-portion .content .input,
+.contact-form .message-portion .content .button {
+  width: 100%;
+  margin: 2% 0;
+}
+
+.contact-form .message-portion .content input {
+  border: 1px solid $grey !important;
+  background-color: transparent;
+  color: $grey;
+  padding: 3.5% 5%;
+  border-radius: 4px;
+}
+
+.contact-form .message-portion .content input:focus {
+  color: $white;
+  box-shadow: 0 0 10px $grey;
+}
+
+.contact-form .message-portion .content input::placeholder {
+  color: $grey;
+}
+
+.contact-form .message-portion .content .text-area {
+  border: 1px solid $grey !important;
+  height: 100px;
+  width: 100%;
+  color: $grey;
+  padding: 4% 5%;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.contact-form .message-portion .content .text-area:focus {
+  outline: none !important;
+  color: $white;
+  box-shadow: 0 0 10px $grey;
+}
+
+.contact-form .message-portion .content .text-area::placeholder {
+  color: $grey;
+}
+
+.contact-form .message-portion .content .text-area::selection {
+  color: $white;
+  background-color: $main;
+}
+
+.contact-form .message-portion .content .icon {
+  color: $white;
+}
+
+.contact-form .message-portion .content .message-icon {
+  height: 50% !important;
+}
+
+.contact-form .message-portion .content .button {
+  background-color: $dark;
+  color: $white;
+  font-size: 12pt;
+}
+
+.contact-form .message-portion .content .button:hover {
+  background-color: $grey;
+  color: $dark;
+  transition: background 1s ease;
+}
+
+// Homepage Latest News
+
+.latest-news {
+  padding: 6% 0 8% 0;
+  background-color: $white;
+}
+
+.latest-news .mini-heading {
+  color: $light;
+  margin-bottom: 0;
+}
+
+.latest-news .main-heading {
+  margin-bottom: 0.75em;
+}
+
+.latest-news .news {
+  border: 1px solid $grey;
+  border-radius: 3px;
+  padding: 4% 5%;
+}
+
+.latest-news .news:hover {
+  border: 1px solid $white;
+  box-shadow: 0 0 20px $grey;
+  transition: box-shadow 0.5s ease;
+}
+
+.latest-news .news .image {
+  margin: 0 auto;
+}
+
+.latest-news .news .date {
+  background-color: $light;
+  color: $white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 2% 6.5%;
+  font-size: 9pt !important;
+  position: absolute;
+  top: 100%;
+  left: 47%;
+  transform: translate(0%, -50%);
+}
+
+.latest-news .news .tags {
+  display: flex;
+}
+
+.latest-news .news .tags .tag {
+  font-size: 9pt;
+  margin-right: 5%;
+  margin-top: 8%;
+  color: $dark;
+}
+
+.latest-news .news .read-more {
+  font-size: 12pt;
+  color: $light;
+}
+
+.latest-news .news .read-more:hover {
+  color: $dark;
+}
