@@ -9,60 +9,144 @@ $fontSmall: 'Rubik', sans-serif;
 $fontLarge: 'Heebo', sans-serif;
 
 // Navbar
+  
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
 
-.nav-bar {
-    position: relative;
-    width: 100% !important;
-    z-index: 1;
+.nav-label {
+  border: none !important;
+  background-color: transparent !important;
+  color: $dark !important;
+  font-size: small !important;
+}
+
+.nav-items {
+  background-color: $white;
+  border-radius: 4px;
+}
+
+.nav-head-logo {
+  z-index: 1 !important;
+  margin: 0 !important;
+}
+
+.nav-logo {
+  width: 80% !important;
+  height: 80% !important;
+}
+
+.nav-item {
+  color: $dark !important;
+  font-weight: bold !important;
+  margin-left: 4px !important;
+}
+
+.nav-button {
+  padding-left: 25px !important;
+  padding-right: 20px !important;
+  font-family: $fontSmall !important;
+  font-weight: lighter !important;
+}
+
+.nav-button:hover {
+  background-color: $white !important;
+}
+
+.push {
+  margin-left: auto !important;
+}
+
+.bars {
+  display: none !important;
+  color: $light !important;
+}
+
+.bar-icon {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+//Responsive Tablet
+
+@media screen and (max-width: 992px) {
+  .nav-items .nav-item {
+    display: none !important;
   }
-  
-  .nav-nav {
+
+  .nav-items .bars {
+    display: block !important;
+  }
+
+  .nav-items.responsive .bars {
     position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 3.2%;
+    right: 0%;
+    height: 14.6%;
+    width: 8.2%;
   }
-  
-  .nav-label {
-    border: none !important;
-    background-color: transparent !important;
-    color: $dark !important;
-    font-size: small !important;
+
+  .nav-items.responsive .bar-icon {
+    position: relative;
+    top: 0%;
+    left: 0.75%;
+    width: 100%;
+    height: 100%;
   }
-  
-  .nav-items {
-    background-color: $white;
-    border-radius: 4px;
+
+  .nav-items.responsive {
+    display: block !important;
   }
-  
-  .nav-head-logo {
-    z-index: 1 !important;
-    margin: 0 !important;
-  }
-  
-  .nav-logo {
-    width: 80% !important;
-    height: 80% !important;
-  }
-  
-  .nav-item {
-    color: $dark !important;
-    font-weight: bold !important;
-    margin-left: 4px !important;
-  }
-  
-  .nav-button {
-    padding-left: 25px !important;
-    padding-right: 20px !important;
-    font-family: $fontSmall !important;
-    font-weight: lighter !important;
-  }
-  
-  .nav-button:hover {
-    background-color: $white !important;
-  }
-  
-  .push {
+
+  .nav-items.responsive .nav-item {
+    display: block !important;
+    text-align: center;
+    margin-right: auto !important;
     margin-left: auto !important;
   }
-  
+
+  .nav-items.responsive .nav-head-logo {
+    display: inline-block !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  .nav-items.responsive .nav-item .nav-button {
+    margin-right: auto !important;
+    margin-left: auto !important;
+    width: 100%;
+  }
+
+}
+
+// Responsive Mobile
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 100%;
+  }
+
+  .navbar .nav-top {
+    text-align: center;
+  }
+
+  .navbar .nav-bottom {
+    margin-top: 0;
+  }
+
+  .navbar .nav-head-logo {
+    text-align: left !important;
+  }
+
+  .navbar .mobile-view {
+    display: none !important;
+  }
+
+  .navbar .account {
+    float: none !important;
+  }
+}
