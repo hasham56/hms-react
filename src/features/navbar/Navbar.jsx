@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './navbar.scss'
 import { Link, NavLink } from 'react-router-dom'
-import { Menu, Button, Container, Icon, Label, Image } from 'semantic-ui-react'
+import { Menu, Button, Container, Icon, Label, Image, Dropdown } from 'semantic-ui-react'
 
 export const Navbar = () => {
 
@@ -20,7 +20,19 @@ export const Navbar = () => {
             <div className='nav-top'>
                 <Label className='nav-label mobile-view' basic content='2072 Pinnickicick Street, WA 98370' icon='map marker alternate' />
                 <Label className='nav-label mobile-view' basic content='info@website.com' icon='mail outline' />
-                <Label className='nav-label account' basic content='Account' icon='user outline' style={{float: 'right'}} />
+                <Dropdown
+                    text='Account'
+                    icon='user outline'
+                    labeled
+                    button
+                    className='nav-label account icon'
+                    style={{ float: 'right' }}
+                >
+                    <Dropdown.Menu>
+                        <Dropdown.Item><Link to='/about'><Icon name='sign in' />Sign In</Link></Dropdown.Item>
+                        <Dropdown.Item><Link to='/about'><Icon name='signup' />Sign Up</Link></Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             </div>
             <Menu className='nav-bottom' secondary>
                 <Container className={navBar} style={{position: 'relative'}}>

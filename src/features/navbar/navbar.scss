@@ -71,6 +71,14 @@ $fontLarge: 'Heebo', sans-serif;
   margin-right: auto !important;
 }
 
+.ui.labeled.icon.button {
+  padding-left: 30px !important;
+}
+
+.icon {
+  background-color: transparent !important;
+}
+
 //Responsive Tablet
 
 @media screen and (max-width: 992px) {
@@ -87,13 +95,13 @@ $fontLarge: 'Heebo', sans-serif;
     top: 3.2%;
     right: 0%;
     height: 14.6%;
-    width: 8.2%;
+    width: 60px;
   }
 
   .nav-items.responsive .bar-icon {
     position: relative;
     top: 0%;
-    left: 0.75%;
+    left: 0.50%;
     width: 100%;
     height: 100%;
   }
@@ -120,7 +128,6 @@ $fontLarge: 'Heebo', sans-serif;
     margin-left: auto !important;
     width: 100%;
   }
-
 }
 
 // Responsive Mobile
@@ -148,27 +155,5 @@ $fontLarge: 'Heebo', sans-serif;
 
   .navbar .account {
     float: none !important;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .nav-items.responsive .bar-icon {
-    left: -30%;
-  }
-
-  .nav-items.responsive .bars {
-    width: 12%;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  .nav-items.responsive .bars {
-    width: 13.5%;
-  }
-}
-
-@media only screen and (max-width: 370px) {
-  .nav-items.responsive .bars {
-    width: 16%;
   }
 }
