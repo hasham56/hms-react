@@ -150,3 +150,13 @@ $fontLarge: 'Heebo', sans-serif;
     float: none !important;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .nav-items.responsive .bar-icon {
+    left: -30%;
+  }
+
+  .nav-items.responsive .bars {
+    width: 12%;
+  }
+}
