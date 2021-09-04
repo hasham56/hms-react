@@ -53,3 +53,10 @@ export const signUpData = {
     pageLinkName: 'SignUp',
     pageLink: 'signup'
 }
+
+export const PageNotFound = {
+    pageName: 'Wrong URL',
+    pageTitle: 'Page Not Found',
+    pageLinkName: '',
+    pageLink: ''
+}

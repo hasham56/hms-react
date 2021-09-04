@@ -10,6 +10,7 @@ import { News } from '../pages/news/News'
 import { Contact } from '../pages/contact/Contact'
 import { SignUp } from '../account/SignUp'
 import { Login } from '../account/Login'
+import { WrongURL } from '../wrongURL/WrongURL'
 
 export const Page = ({data}) => {
 
@@ -39,6 +40,7 @@ export const Page = ({data}) => {
             {data.pageName === 'Contact' && <Contact />}
             {data.pageName === 'Login' && <Login />}
             {data.pageName === 'Sign Up' && <SignUp />}
+            {data.pageName === 'Wrong URL' && <WrongURL />}
         </>
     )
 }

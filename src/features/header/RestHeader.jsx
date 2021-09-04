@@ -9,13 +9,14 @@ export const RestHeader = ({pageTitle, pageLink, pageLinkName}) => {
             <Image className='header-image' src={'/assets/header/maskGroupRest.png'} />
             <div className='header-head-rest'>
                 <p className='header-primary-text header-primary-text-rest'>{pageTitle}</p>
+                {pageLink && pageLinkName &&
                 <p className='header-secondary-text'>
                     <Link className='link' to='/'>
                         Home
                     </Link> | <Link className='link active' to={`/${pageLink}`}>
                         {pageLinkName}
                     </Link>
-                </p>
+                </p>}
             </div>
         </div>
     )
