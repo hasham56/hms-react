@@ -1,4 +1,47 @@
 .wrong-url {
     background-color: #eee;
-    padding: 10% 10% 15% 10%;
+    padding: 1% 1% 3% 1%;
+}
+
+.wrong-url .animation {
+    width: 200px;
+    height: 110px;
+    position: relative;
+    animation-duration: 2s;
+    animation: mymove 6s infinite;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+.wrong-url .cloud1 {
+    bottom: 600px;
+    animation-timing-function: linear;
+    animation-delay: -2s;
+}
+
+.wrong-url .cloud2 {
+    bottom: 500px;
+    animation-timing-function: ease-in-out;
+}
+
+.wrong-url .cloud3 {
+    bottom: 400px;
+    animation-timing-function: ease-in;
+    animation-delay: -6s;
+}
+
+.wrong-url .cloud4 {
+    bottom: 200px;
+    animation-timing-function: ease-in-out;
+    animation-delay: -8s;
+}
+
+@keyframes mymove {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: 95%;
+    }
 }

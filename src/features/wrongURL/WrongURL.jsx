@@ -9,6 +9,9 @@ export const WrongURL = () => {
             <Container>
                 <Image src={'/assets/wrongURL/wrongURL.png'} />
             </Container>
+            <div className='animation cloud1'><Image src={'/assets/wrongURL/cloud1.jpg'} /></div>
+            <div className='animation cloud2'><Image src={'/assets/wrongURL/cloud1.jpg'} /></div>
+            <div className='animation cloud3'><Image src={'/assets/wrongURL/cloud1.jpg'} /></div>
         </div>
     )
 }
