@@ -6,23 +6,25 @@ import * as Yup from 'yup'
 import { Container, Icon, Label, Button } from 'semantic-ui-react'
 import { MyInputField } from './MyInputFields.jsx'
 
-export const SignUpEmail = ({showOptions}) => {
+export const SignUpForm = ({showOptions}) => {
     
     return (
         <div className='signup-form'>
             <Container>
                 <p className='primary-text heading'>Please Enter Your Details</p>
-                
 
                 <Formik
                     initialValues={{email: '', password: ''}}
                     validationSchema={
                         Yup.object({
+                            username: Yup.string().required('Username is required!'),
                             email: Yup.string().required('Email is required!').email('Please enter a valid email!'),
                             password: Yup.string().required('Password is required!').matches(
-                                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
-                                    "Must Contain 8 Characters, One Uppercase and A Digit!")
-                            
+                                /^(?=.*[A-Z])/, 'Password must contain one uppercase letter!').matches(
+                                /^(?=.*[0-9])/, 'Password must contain a digit!').matches(
+                                /^(?=.{8,})/, 'Password must be 8 letters or more!'),
+                            confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Password does not match!').required(
+                                'Confirm Password is required!')
                         })
                     }
                     onSubmit={(values, {setSubmitting}) => {

@@ -10,13 +10,13 @@ export const SignUpOptions = ({showSignUpForm}) => {
             <p className='primary-text heading'>Please Select Sign In Option</p>
             <div className="options">
                 <Grid>
-                    <Grid.Column width='16' textAlign='right'>
+                    <Grid.Column width='16' textAlign='center'>
                         <Button className='btn-primary platform-btn' icon='google' content='Continue with google' />
                     </Grid.Column>
-                    <Grid.Column width='16' textAlign='left'>
+                    <Grid.Column width='16' textAlign='center'>
                         <Button className='btn-primary platform-btn' icon='facebook' content='Continue with facebook' />
                     </Grid.Column>
-                    <Grid.Column width='16' textAlign='left'>
+                    <Grid.Column width='16' textAlign='center'>
                         <Button className='btn-primary platform-btn' icon='mail' content='Continue with Email' onClick={() => showSignUpForm(false)} />
                     </Grid.Column>
                 </Grid>

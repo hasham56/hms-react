@@ -33,7 +33,7 @@ export const Navbar = () => {
                             <Link className='sign-link' to='/login'><Icon name='sign in' />&nbsp;&nbsp;Login</Link>
                         </Dropdown.Item>
                         <Dropdown.Item className='item'>
-                            <Link className='sign-link' to='/signUp'><Icon name='signup' />&nbsp;&nbsp;Sign Up</Link>
+                            <Link className='sign-link' to='/signup'><Icon name='signup' />&nbsp;&nbsp;Sign Up</Link>
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
