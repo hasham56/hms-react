@@ -29,7 +29,7 @@ $fontLarge: 'Heebo', sans-serif;
 
 .footer-icons:hover {
   cursor: pointer;
-  background-color: $main;
+  background-color: $main !important;
   color: $white;
   transition: background 1s ease;
 }

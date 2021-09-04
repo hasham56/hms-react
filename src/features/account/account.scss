@@ -1,0 +1,229 @@
+$white: #fff;
+$grey: #e9e9e9;
+$darkGrey: #7C7E93;
+$main: #2e95a0;
+$light: #00acb1;
+$dark: #005963;
+$purplish: #fcf7ff;
+$fontSmall: 'Rubik', sans-serif;
+$fontLarge: 'Heebo', sans-serif;
+
+// Login Form
+
+.login-form {
+    background-color: $white;
+    text-align: center;
+    padding-top: 7%;
+    padding-bottom: 10%;
+}
+
+.login-form .form {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-form .platform-option {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-form .heading {
+    font-size: 30pt;
+}
+
+.login-form .forgot-password {
+    text-align: right;
+    margin-top: 0.2em !important;
+}
+
+.login-form .input-field {
+    color: $dark;
+}
+
+.login-form .submit-btn {
+    width: 50% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.login-form .divider {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-form .horizontal-line {
+    background-color: $grey;
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+}
+
+.login-form .platform-btn {
+    background-color: $white !important;
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.login-form .platform-btn:hover {
+    background-color: $main !important;
+    transition: background-color 0.5s ease;
+}
+
+.login-form .sign-up {
+    margin-top: 3%;
+    color: $dark;
+}
+
+.login-form .sign-up .signup-link {
+    color: $light;
+}
+
+.login-form .sign-up .signup-link:hover {
+    color: $main;
+}
+
+.login-form .error-label {
+    margin-bottom: 1px !important;
+}
+
+.login-form .field {
+    margin-bottom: 20px !important;
+}
+
+.login-form .error.field {
+    margin-bottom: 0 !important;
+}
+
+// SignUp Options
+
+.signup-options {
+    background-color: $white;
+    text-align: center;
+    padding-top: 7%;
+    padding-bottom: 10%;
+}
+
+.signup-options .options {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-options .heading {
+    font-size: 30pt;
+}
+
+.signup-options .platform-btn {
+    background-color: $white !important;
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.signup-options .platform-btn i {
+    float: left;
+}
+
+.signup-options .platform-btn:hover {
+    background-color: $main !important;
+    transition: background-color 0.5s ease;
+}
+
+.signup-options .terms-line {
+    margin-top: 6%;
+    margin-bottom: 6%;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(44, 44, 44);
+    line-height: 1.5;
+}
+
+.signup-options .login {
+    margin-top: 3%;
+    color: $dark;
+}
+
+.signup-options .login .login-link {
+    color: $light;
+}
+
+.signup-options .login .login-link:hover {
+    color: $main;
+}
+
+// SignUp Form
+
+.signup-form {
+    background-color: $white;
+    text-align: center;
+    padding-top: 7%;
+    padding-bottom: 10%;
+}
+
+.signup-form .form {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-form .heading {
+    font-size: 30pt;
+}
+
+.signup-form .input-field {
+    color: $dark;
+}
+
+.signup-form .submit-btn {
+    width: 50% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.signup-form .terms-line {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(44, 44, 44);
+    line-height: 1.5;
+}
+
+.signup-form .login {
+    margin-top: 3%;
+    color: $dark;
+}
+
+.signup-form .login .login-link {
+    color: $light;
+}
+
+.signup-form .login .login-link:hover {
+    color: $main;
+}
+
+.signup-form .error-label {
+    margin-bottom: 1px !important;
+}
+
+.signup-form .field {
+    margin-bottom: 20px !important;
+}
+
+.signup-form .error.field {
+    margin-bottom: 0 !important;
+}
+
+.signup-form .go-back {
+    color: $light;
+}
+
+.signup-form .go-back:hover {
+    color: $main;
+}

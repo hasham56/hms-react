@@ -12,7 +12,7 @@ export const RestHeader = ({pageTitle, pageLink, pageLinkName}) => {
                 <p className='header-secondary-text'>
                     <Link className='link' to='/'>
                         Home
-                    </Link> | <Link className='link' to={`/${pageLink}`}>
+                    </Link> | <Link className='link active' to={`/${pageLink}`}>
                         {pageLinkName}
                     </Link>
                 </p>

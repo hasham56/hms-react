@@ -28,9 +28,13 @@ export const Navbar = () => {
                     className='nav-label account icon'
                     style={{ float: 'right' }}
                 >
-                    <Dropdown.Menu>
-                        <Dropdown.Item><Link to='/about'><Icon name='sign in' />Sign In</Link></Dropdown.Item>
-                        <Dropdown.Item><Link to='/about'><Icon name='signup' />Sign Up</Link></Dropdown.Item>
+                    <Dropdown.Menu className='dropdown'>
+                        <Dropdown.Item className='item'>
+                            <Link className='sign-link' to='/login'><Icon name='sign in' />&nbsp;&nbsp;Login</Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item className='item'>
+                            <Link className='sign-link' to='/signUp'><Icon name='signup' />&nbsp;&nbsp;Sign Up</Link>
+                        </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>

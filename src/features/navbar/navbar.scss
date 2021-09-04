@@ -79,6 +79,14 @@ $fontLarge: 'Heebo', sans-serif;
   background-color: transparent !important;
 }
 
+.account .dropdown .sign-link {
+  color: $dark;
+}
+
+.account .dropdown .item:hover {
+  background-color: $purplish !important;
+}
+
 //Responsive Tablet
 
 @media screen and (max-width: 992px) {

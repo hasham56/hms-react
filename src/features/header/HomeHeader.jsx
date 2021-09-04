@@ -9,7 +9,8 @@ export const HomeHeader = () => {
             <Container className='header-head-home'>
                 <Container className='header-head-body'>
                     <Container className='header-head-content'>
-                        <div style={{display: 'flex'}}><p className='header-top-text'>Markets & Resources</p>
+                        <div style={{ display: 'flex' }}>
+                            <p className='header-top-text'>Markets & Resources</p>
                             <div className='header-horizontal-line' ></div>
                         </div>
                         <p className='header-primary-text header-primary-text-home'>Find The Best<br />Doctors near By You</p>

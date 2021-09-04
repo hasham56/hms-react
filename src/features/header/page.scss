@@ -11,91 +11,93 @@ $fontLarge: 'Heebo', sans-serif;
 // Page header
 
 .header {
-    position: relative;
-  }
+  position: relative;
+}
+
+.header-image {
+  width: 100% !important;
+  z-index: -1;
+}
+
+.header-head-home {
+  position: absolute;
+  top: 52.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex !important;
+}
+
+.header-head-rest {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-head-body {
+  position: relative;
+}
+
+.header-head-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 20px;
+}
+
+.header-head-image {
+  width: 35%;
+  padding-right: 20px;
+}
+
+.header-top-text {
+  color: $light;
+  font-family: $fontSmall;
+  font-weight: bold;
+}
+
+.header-primary-text {
+  color: $dark;
+  font-family: $fontLarge;
+  font-size: 40pt;
+  font-weight: bold;
+}
+
+.header-primary-text-home {
+  margin-bottom: 30px;
+}
+
+.header-primary-text-rest {
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.header-horizontal-line {
+  background-color: $light;
+  width: 60px;
+  height: 1.5px;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.header-secondary-text {
+  text-align: center;
+  color: $main;
+  font-family: $fontSmall;
+  font-size: 12pt;
+}
+
+.link {
+  color: $main;
+}
+
+.link:hover {
+  color: $dark;
+}
   
-  .header-image {
-    width: 100% !important;
-    z-index: -1;
-  }
-  
-  .header-head-home {
-    position: absolute;
-    top: 52.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: inline-flex !important;
-  }
-  
-  .header-head-rest {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .header-head-body {
-    position: relative;
-  }
-  
-  .header-head-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding-left: 20px;
-  }
-  
-  .header-head-image {
-    width: 35%;
-    padding-right: 20px;
-  }
-  
-  .header-top-text {
-    color: $light;
-    font-family: $fontSmall;
-    font-weight: bold;
-  }
-  
-  .header-primary-text {
-    color: $dark;
-    font-family: $fontLarge;
-    font-size: 40pt;
-    font-weight: bold;
-  }
-  
-  .header-primary-text-home {
-    margin-bottom: 30px;
-  }
-  
-  .header-primary-text-rest {
-    margin-bottom: 20px;
-    align-items: center;
-  }
-  
-  .header-horizontal-line {
-    background-color: $light;
-    width: 60px;
-    height: 1.5px;
-    border-radius: 5px;
-    margin-left: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .header-secondary-text {
-    text-align: center;
-    color: $main;
-    font-family: $fontSmall;
-    font-size: 12pt;
-  }
-  
-  .link {
-    color: $main;
-  }
-  
-  .link:hover {
-    color: $dark;
-  }
-  
-  
+.active {
+  color: $dark;
+}

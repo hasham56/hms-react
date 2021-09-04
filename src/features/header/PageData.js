@@ -39,3 +39,17 @@ export const contactPageData = {
     pageLinkName: 'Contact Us',
     pageLink: 'contact'
 }
+
+export const loginData = {
+    pageName: 'Login',
+    pageTitle: 'Login',
+    pageLinkName: 'Login',
+    pageLink: 'login'
+}
+
+export const signUpData = {
+    pageName: 'Sign Up',
+    pageTitle: 'Sign Up',
+    pageLinkName: 'SignUp',
+    pageLink: 'signup'
+}
