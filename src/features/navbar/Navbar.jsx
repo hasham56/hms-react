@@ -57,7 +57,7 @@ export const Navbar = () => {
                 <Label className='nav-label mobile-view' basic content='2072 Pinnickicick Street, WA 98370' icon='map marker alternate' />
                 <Label className='nav-label mobile-view' basic content='info@website.com' icon='mail outline' />
                 <Dropdown
-                    text={authenticated ? 'Hi! ' + currentUserProfile.displayName : 'Account'}
+                    text={currentUserProfile && authenticated ? 'Hi! ' + currentUserProfile.displayName : 'Account'}
                     icon={authenticated ? 'caret down' : 'user outline'}
                     labeled={authenticated ? false : true}
                     button
