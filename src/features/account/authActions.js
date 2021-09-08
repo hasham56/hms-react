@@ -1,4 +1,7 @@
 import firebase from '../../app/config/firebase'
+import { getUserProfile } from '../../app/firestore/firebaseStore'
+import { listenToCurrentUserProfile } from '../profile/profileActions'
+import { dataFromSnapshot } from '../../app/firestore/firebaseService'
 import { SIGN_IN_USER, SIGN_OUT_USER } from './authConstants'
 
 export const signInUser = (user) => {
@@ -19,10 +22,16 @@ export const verifyAuth = () => {
         return firebase
             .auth()
             .onAuthStateChanged(user => {
-                if (user)
+                if (user) {
+                    const profileRef = getUserProfile(user.uid)
+                    profileRef.onSnapshot(snapshot => {
+                        dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)))
+                    })
                     dispatch(signInUser(user))
-                else
+                }
+                else {
                     dispatch(signOutUser())
+                }    
         })
     }
 }

@@ -14,7 +14,9 @@ export const Navbar = () => {
     const dispatch = useDispatch()
 
     const [navBar, setNavBar] = useState('nav-items')
-    const { authenticated, currentUser } = useSelector(state => state.auth)
+    const { authenticated } = useSelector(state => state.auth)
+    const { currentUserProfile } = useSelector(state => state.profile)
+
     const showError = (message) => {
         toast.error(message, {
             position: "bottom-center",
@@ -55,7 +57,7 @@ export const Navbar = () => {
                 <Label className='nav-label mobile-view' basic content='2072 Pinnickicick Street, WA 98370' icon='map marker alternate' />
                 <Label className='nav-label mobile-view' basic content='info@website.com' icon='mail outline' />
                 <Dropdown
-                    text={authenticated ? 'Hi! ' + currentUser.email : 'Account'}
+                    text={authenticated ? 'Hi! ' + currentUserProfile.displayName : 'Account'}
                     icon={authenticated ? 'caret down' : 'user outline'}
                     labeled={authenticated ? false : true}
                     button

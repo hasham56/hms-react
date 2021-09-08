@@ -10,11 +10,11 @@ $fontLarge: 'Heebo', sans-serif;
 
 * {
   font-family: $fontSmall;
-  user-select: none;
-  -moz-user-select:none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -ms-user-select: none;
+  // user-select: none;
+  // -moz-user-select:none;
+  // -webkit-user-select: none;
+  // -webkit-touch-callout: none;
+  // -ms-user-select: none;
 }
 
 body {
