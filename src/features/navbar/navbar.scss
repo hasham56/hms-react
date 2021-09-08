@@ -79,13 +79,20 @@ $fontLarge: 'Heebo', sans-serif;
   background-color: transparent !important;
 }
 
-.account .dropdown .sign-link {
-  color: $dark;
+.account .dropdown .item {
+  color: $dark !important;
 }
 
 .account .dropdown .item:hover {
-  background-color: $purplish !important;
+  background-color: $dark !important;
+  color: $white !important;
 }
+
+.account .dropdown .item.active {
+  background-color: $dark !important;
+  color: $white !important;
+}
+
 
 //Responsive Tablet
 

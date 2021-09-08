@@ -8,37 +8,36 @@
 }
 
 .wrong-url .animation {
-    width: 20%;
     position: absolute;
     animation-duration: 2s;
-    animation: mymove 8s infinite;
+    animation: mymove 12s infinite;
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
 }
 
 .wrong-url .cloud1 {
-    bottom: 60%;
+    bottom: 50%;
     animation-timing-function: linear;
     animation-delay: -2s;
 }
 
 .wrong-url .cloud2 {
-    bottom: 35%;
+    bottom: 20%;
     animation-timing-function: ease-in-out;
 }
 
 .wrong-url .cloud3 {
-    bottom: 25%;
+    bottom: 30%;
     animation-timing-function: ease-in;
     animation-delay: -6s;
 }
 
 @keyframes mymove {
     from {
-        left: -35%;
+        left: -50%;
     }
 
     to {
-        left: 115%;
+        left: 130%;
     }
 }

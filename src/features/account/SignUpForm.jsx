@@ -1,12 +1,31 @@
 import React from 'react'
 import './account.scss'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Container, Icon, Label, Button } from 'semantic-ui-react'
+import { Container, Icon, Button } from 'semantic-ui-react'
 import { MyInputField } from './MyInputFields.jsx'
+import { toast, Slide } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { registerInFirebase } from '../../app/firestore/firebaseService'
 
-export const SignUpForm = ({showOptions}) => {
+export const SignUpForm = ({ showOptions }) => {
+    
+    const history = useHistory()
+    const showError = (message) => {
+        toast.error(message, {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            transition: Slide,
+            theme: 'colored',
+            pauseOnFocusLoss: false
+        })
+    }
     
     return (
         <div className='signup-form'>
@@ -17,7 +36,7 @@ export const SignUpForm = ({showOptions}) => {
                     initialValues={{email: '', password: ''}}
                     validationSchema={
                         Yup.object({
-                            username: Yup.string().required('Username is required!'),
+                            displayName: Yup.string().required('Username is required!'),
                             email: Yup.string().required('Email is required!').email('Please enter a valid email!'),
                             password: Yup.string().required('Password is required!').matches(
                                 /^(?=.*[A-Z])/, 'Password must contain one uppercase letter!').matches(
@@ -27,18 +46,26 @@ export const SignUpForm = ({showOptions}) => {
                                 'Confirm Password is required!')
                         })
                     }
-                    onSubmit={(values, {setSubmitting}) => {
-                        setSubmitting(true)
-                        // make async call
-                        console.log(values)
-                        setSubmitting(false)
+                    onSubmit={async (values, {setSubmitting}) => {
+                            setSubmitting(true)
+                            try {
+                                await registerInFirebase(values)
+                                history.push('/')
+                            } catch (error) {
+                                if (error.code === 'auth/network-request-failed')
+                                    showError('Check your internet connection!')
+                                else
+                                    showError('Email already is use!')
+                            } finally {
+                                setSubmitting(false)
+                            }
                         }
                     }
                 >
-                    {({isSubmitting, isValid, dirty, errors}) => (
+                    {({isSubmitting, isValid, dirty}) => (
                         <Form className='ui form'>
                             <MyInputField
-                                name='username'
+                                name='displayName'
                                 placeholder='Enter your username'
                                 icon={<Icon className='icon' name='user' />} />
                             <MyInputField
@@ -55,7 +82,6 @@ export const SignUpForm = ({showOptions}) => {
                                 placeholder='Confirm your password'
                                 type='password'
                                 icon={<Icon className='icon' name='lock' />} />
-                            {errors.auth && <Label basic color='red' style={{marginBottom: 10}} content={errors.auth} />}
                             <Button
                                 type='submit'
                                 loading={isSubmitting}

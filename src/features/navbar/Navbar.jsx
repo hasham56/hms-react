@@ -55,25 +55,24 @@ export const Navbar = () => {
                 <Label className='nav-label mobile-view' basic content='2072 Pinnickicick Street, WA 98370' icon='map marker alternate' />
                 <Label className='nav-label mobile-view' basic content='info@website.com' icon='mail outline' />
                 <Dropdown
-                    text={authenticated ? currentUser.email : 'Account'}
-                    icon='user outline'
-                    labeled
+                    text={authenticated ? 'Hi! ' + currentUser.email : 'Account'}
+                    icon={authenticated ? 'caret down' : 'user outline'}
+                    labeled={authenticated ? false : true}
                     button
                     className='nav-label account icon'
                     style={{ float: 'right' }}
                 >
-                    <Dropdown.Menu className='dropdown'>
-                        <Dropdown.Item className='item'>
-                            {authenticated
-                                ? <Link className='sign-link' to='/profile'><Icon name='settings' />&nbsp;&nbsp;Profile Settings</Link>
-                                : <Link className='sign-link' to='/login'><Icon name='sign in' />&nbsp;&nbsp;Login</Link>}
-                        </Dropdown.Item>
-                        <Dropdown.Item className='item'>
-                            {authenticated
-                                ? <p className='sign-link' onClick={() => handleSignOut()}><Icon name='sign out alternate' />&nbsp;&nbsp;Sign Out</p>
-                                : <Link className='sign-link' to='/signup'><Icon name='signup' />&nbsp;&nbsp;Sign Up</Link>}
-                        </Dropdown.Item>
-                    </Dropdown.Menu>
+                    {authenticated
+                        ? <Dropdown.Menu className='dropdown'>
+                            <Dropdown.Item className='item' as={NavLink} to='/profile'>Profile</Dropdown.Item>
+                            <Dropdown.Item className='item' as={NavLink} to='/appointments'>Appt. History</Dropdown.Item>
+                            <Dropdown.Item className='item' as={NavLink} to='/favourite'>Favourites</Dropdown.Item>
+                            <Dropdown.Item className='item' onClick={() => handleSignOut()}>Logout</Dropdown.Item>
+                        </Dropdown.Menu>
+                        : <Dropdown.Menu className='dropdown'>
+                            <Dropdown.Item className='item' as={NavLink} to='/login'><Icon name='sign in' />&nbsp;&nbsp;Login</Dropdown.Item>
+                            <Dropdown.Item className='item' as={NavLink} to='/signup'><Icon name='signup' />&nbsp;&nbsp;Sign Up</Dropdown.Item>
+                        </Dropdown.Menu>}
                 </Dropdown>
             </div>
             <Menu className='nav-bottom' secondary>

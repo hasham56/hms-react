@@ -7,7 +7,7 @@ import { Container, Icon, Button, Grid } from 'semantic-ui-react'
 import { MyInputField } from './MyInputFields.jsx'
 import { signInWithEmail } from '../../app/firestore/firebaseService'
 import { toast, Slide } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const Login = () => {
 
