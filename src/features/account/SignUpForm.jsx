@@ -73,7 +73,7 @@ export const SignUpForm = ({showOptions}) => {
                     And have read and understood the <Link to='/'>Privacy Policy.</Link>
                 </p>
                 <p className='main-text login'>Already have an account? <Link className='login-link' to='/login'>Login</Link></p>
-                <Link className='go-back' onClick={() => showOptions(true)}><Icon name='left arrow' /> GO BACK</Link>
+                <p className='go-back' onClick={() => showOptions(true)}><Icon name='left arrow' /> GO BACK</p>
             </Container>
         </div>   
     )

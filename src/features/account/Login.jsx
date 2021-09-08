@@ -1,19 +1,37 @@
 import React from 'react'
 import './account.scss'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Container, Icon, Label, Button, Grid } from 'semantic-ui-react'
+import { Container, Icon, Button, Grid } from 'semantic-ui-react'
 import { MyInputField } from './MyInputFields.jsx'
+import { signInWithEmail } from '../../app/firestore/firebaseService'
+import { toast, Slide } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = () => {
-    
+
+    const history = useHistory()
+    const showError = (message) => {
+        toast.error(message, {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            transition: Slide,
+            theme: 'colored',
+            pauseOnFocusLoss: false
+        })
+    }
+
     return (
         <div className='login-form'>
             <Container>
                 <p className='primary-text heading'>Please Enter Your Details</p>
                 
-
                 <Formik
                     initialValues={{email: '', password: ''}}
                     validationSchema={
@@ -25,15 +43,23 @@ export const Login = () => {
                             )
                         })
                     }
-                    onSubmit={(values, {setSubmitting}) => {
+                    onSubmit={async (values, {setSubmitting}) => {
                         setSubmitting(true)
-                        // make async call
-                        console.log(values)
-                        setSubmitting(false)
+                        try {
+                            await signInWithEmail(values)
+                            history.push('/')
+                        } catch (error) {
+                            if (error.code === 'auth/network-request-failed')
+                                showError('Check your internet connection!')
+                            else
+                                showError('Wrong email or password!')
+                        } finally {
+                            setSubmitting(false)
+                        }
                         }
                     }
                 >
-                    {({isSubmitting, isValid, dirty, errors}) => (
+                    {({isSubmitting, isValid, dirty}) => (
                         <Form className='ui form'>
                             <MyInputField
                                 name='email'
@@ -45,7 +71,6 @@ export const Login = () => {
                                 type='password'
                                 icon={<Icon className='icon' name='lock' />} />
                             <p className='main-text forgot-password'><Link className='link' to='/forgotpassword'>Forgot Password?</Link></p>
-                            {errors.auth && <Label basic color='red' style={{marginBottom: 10}} content={errors.auth} />}
                             <Button
                                 type='submit'
                                 loading={isSubmitting}

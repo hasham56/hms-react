@@ -3,45 +3,42 @@
     padding: 1% 1% 3% 1%;
 }
 
-.wrong-url .animation {
-    width: 200px;
-    height: 110px;
+.wrong-url .animation-container {
     position: relative;
+}
+
+.wrong-url .animation {
+    width: 20%;
+    position: absolute;
     animation-duration: 2s;
-    animation: mymove 6s infinite;
+    animation: mymove 8s infinite;
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
 }
 
 .wrong-url .cloud1 {
-    bottom: 600px;
+    bottom: 60%;
     animation-timing-function: linear;
     animation-delay: -2s;
 }
 
 .wrong-url .cloud2 {
-    bottom: 500px;
+    bottom: 35%;
     animation-timing-function: ease-in-out;
 }
 
 .wrong-url .cloud3 {
-    bottom: 400px;
+    bottom: 25%;
     animation-timing-function: ease-in;
     animation-delay: -6s;
 }
 
-.wrong-url .cloud4 {
-    bottom: 200px;
-    animation-timing-function: ease-in-out;
-    animation-delay: -8s;
-}
-
 @keyframes mymove {
     from {
-        left: 0%;
+        left: -35%;
     }
 
     to {
-        left: 95%;
+        left: 115%;
     }
 }
