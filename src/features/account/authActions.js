@@ -3,6 +3,7 @@ import { getUserProfile } from '../../app/firestore/firebaseStore'
 import { listenToCurrentUserProfile } from '../profile/profileActions'
 import { dataFromSnapshot } from '../../app/firestore/firebaseService'
 import { SIGN_IN_USER, SIGN_OUT_USER } from './authConstants'
+import { asyncActionStart, asyncActionFinish } from '../../app/async/asyncReducer'
 
 export const signInUser = (user) => {
     return {
@@ -19,6 +20,7 @@ export const signOutUser = () => {
 
 export const verifyAuth = () => {
     return function (dispatch) {
+        dispatch(asyncActionStart())
         return firebase
             .auth()
             .onAuthStateChanged(user => {
@@ -28,9 +30,11 @@ export const verifyAuth = () => {
                         dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)))
                     })
                     dispatch(signInUser(user))
+                    dispatch(asyncActionFinish())
                 }
                 else {
                     dispatch(signOutUser())
+                    dispatch(asyncActionFinish())
                 }    
         })
     }

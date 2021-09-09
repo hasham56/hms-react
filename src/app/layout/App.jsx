@@ -7,10 +7,14 @@ import { Navbar } from '../../features/navbar/Navbar'
 import { Footer } from '../../features/footer/Footer'
 import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux'
+import { LoadingComponent } from './LoadingComponent'
 
 export const App = () => {
 
   const { authenticated } = useSelector(state => state.auth)
+  const { loading } = useSelector(state => state.async)
+
+  if (loading) return <LoadingComponent />
 
   return (
     <>
