@@ -1,6 +1,6 @@
 import React from 'react'
 import './account.scss'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Container, Icon, Button, Grid } from 'semantic-ui-react'
@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export const Login = () => {
 
-    const history = useHistory()
     const showError = (message) => {
         toast.error(message, {
             position: "bottom-center",
@@ -47,7 +46,6 @@ export const Login = () => {
                         setSubmitting(true)
                         try {
                             await signInWithEmail(values)
-                            history.push('/')
                         } catch (error) {
                             if (error.code === 'auth/network-request-failed')
                                 showError('Check your internet connection!')

@@ -1,13 +1,16 @@
 import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { Page } from '../../features/header/Page'
 import { doctorsPageData, aboutPageData, servicesPageData, newsPageData, contactPageData, homePageData, loginData, signUpData, PageNotFound } from '../../features/header/PageData'
 import { Navbar } from '../../features/navbar/Navbar'
 import { Footer } from '../../features/footer/Footer'
 import { ToastContainer } from 'react-toastify'
+import { useSelector } from 'react-redux'
 
 export const App = () => {
+
+  const { authenticated } = useSelector(state => state.auth)
 
   return (
     <>
@@ -20,8 +23,8 @@ export const App = () => {
           <Route path='/services' component={() => <Page data={servicesPageData} />} />
           <Route path='/news' component={() => <Page data={newsPageData} />} />
           <Route path='/contact' component={() => <Page data={contactPageData} />} />
-          <Route path='/login' component={() => <Page data={loginData} />} />
-          <Route path='/signup' component={() => <Page data={signUpData} />} />
+          <Route path='/login' component={() => (authenticated ? <Redirect to='/' /> : <Page data={loginData} />)} />
+          <Route path='/signup' component={() => (authenticated ? <Redirect to='/' /> : <Page data={signUpData} />)} />
           <Route component={() => <Page data={PageNotFound} />} />
         </Switch>
       
