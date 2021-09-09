@@ -90,10 +90,10 @@ export const Login = () => {
                         <div className='horizontal-line' style={{ marginLeft: '5px' }}></div>
                     </div>
                     <Grid>
-                        <Grid.Column computer='8' textAlign='right'>
+                        <Grid.Column mobile={16} computer='8' textAlign='right'>
                             <Button className='btn-primary platform-btn' icon='google' content='Continue with google' />
                         </Grid.Column>
-                        <Grid.Column computer='8' textAlign='left'>
+                        <Grid.Column mobile={16} computer='8' textAlign='left'>
                             <Button className='btn-primary platform-btn' icon='facebook' content='Continue with facebook' />
                         </Grid.Column>
                     </Grid>

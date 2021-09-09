@@ -76,7 +76,7 @@ $fontLarge: 'Heebo', sans-serif;
 }
 
 .login-form .sign-up {
-    margin-top: 3%;
+    margin-top: 3.5%;
     color: $dark;
 }
 
@@ -231,4 +231,95 @@ $fontLarge: 'Heebo', sans-serif;
 .signup-form .go-back:hover {
     color: $main;
     cursor: pointer;
+}
+
+//Responsive Tablet
+
+@media screen and (max-width: 992px) {
+
+    // Login Responsiveness
+
+    .login-form .form {
+        width: 60%;
+    }
+
+    .login-form .submit-btn {
+        width: 50% !important;
+    }
+
+    .login-form .sign-up {
+        margin-bottom: 5%;
+    }
+
+    .login-form .heading {
+        font-size: 25pt;
+    }
+
+    // Signup Options Responsiveness
+
+    .signup-options .options {
+        width: 60%;
+    }
+
+    .signup-options .login {
+        margin-bottom: 5%;
+    }
+
+    // Signup Form Responsiveness
+
+    .signup-form .form {
+        width: 60%;
+    }
+
+    .signup-form .submit-btn {
+        width: 50% !important;
+    }
+
+    .signup-form .go-back {
+        margin-bottom: 5%;
+    }
+}
+
+// Responsive Mobile
+
+@media screen and (max-width: 768px) {
+
+    // Login Responsiveness
+
+    .login-form .form {
+        width: 70%;
+    }
+
+    .login-form .submit-btn {
+        width: 60% !important;
+    }
+
+    .login-form .platform-option {
+        width: 70%;
+    }
+
+    .login-form .sign-up {
+        margin-bottom: 0;
+        margin-top: 5%;
+    }
+
+    .login-form .heading {
+        font-size: 20pt;
+    }
+
+    // Signup Options Responsiveness
+
+    .signup-options .options {
+        width: 95%;
+    }
+
+    // Signup Form Responsiveness
+
+    .signup-form .form {
+        width: 70%;
+    }
+
+    .signup-form .submit-btn {
+        width: 60% !important;
+    }
 }

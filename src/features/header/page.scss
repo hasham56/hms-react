@@ -28,6 +28,8 @@ $fontLarge: 'Heebo', sans-serif;
 }
 
 .header-head-rest {
+  width: 100%;
+  text-align: center;
   position: absolute;
   top: 60%;
   left: 50%;
@@ -55,6 +57,7 @@ $fontLarge: 'Heebo', sans-serif;
   color: $light;
   font-family: $fontSmall;
   font-weight: bold;
+  font-size: 12pt;
 }
 
 .header-primary-text {
@@ -100,4 +103,36 @@ $fontLarge: 'Heebo', sans-serif;
   
 .active {
   color: $dark;
+}
+
+// Responsive mobile
+
+@media screen and (max-width: 768px){
+  .header-head-rest {
+    top: 70%;
+  }
+
+  .header-primary-text {
+    font-size: 35pt;
+  }
+
+  .header-secondary-text {
+    font-size: 10pt;
+  }
+
+  .header-primary-text-rest {
+    margin-bottom: 5px;
+  }
+}
+
+// Responsive Extra small screens
+
+@media screen and (max-width: 460px) {
+  .header-head-rest {
+    top: 80%;
+  }
+
+  .header-primary-text-rest {
+    margin-bottom: 2px;
+  }
 }
