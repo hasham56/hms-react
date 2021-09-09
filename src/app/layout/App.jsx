@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { Page } from '../../features/header/Page'
@@ -11,10 +11,16 @@ import { LoadingComponent } from './LoadingComponent'
 
 export const App = () => {
 
+  const [load, setLoad] = useState(true)
+
   const { authenticated } = useSelector(state => state.auth)
   const { loading } = useSelector(state => state.async)
 
-  if (loading) return <LoadingComponent />
+  useEffect(() => {
+    setLoad(false)
+  }, [])
+
+  if (loading || load) return <LoadingComponent />
 
   return (
     <>
