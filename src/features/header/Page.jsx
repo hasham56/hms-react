@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './page.scss'
 import { HomeHeader } from './HomeHeader'
 import { RestHeader } from './RestHeader'
+import { ProfileHeader } from './ProfileHeader'
 import { Home } from '../pages/home/Home'
 import { Doctors } from '../pages/doctors/Doctors'
 import { About } from '../pages/about/About'
@@ -10,6 +11,7 @@ import { News } from '../pages/news/News'
 import { Contact } from '../pages/contact/Contact'
 import { SignUp } from '../account/SignUp'
 import { Login } from '../account/Login'
+import { Profile } from '../profile/Profile'
 import { WrongURL } from '../wrongURL/WrongURL'
 
 export const Page = ({data}) => {
@@ -19,6 +21,8 @@ export const Page = ({data}) => {
     useEffect(() => {
         if (data.pageName === 'Home')
             setHeader(<HomeHeader />)
+        else if (data.pageName === 'Profile')
+            setHeader(<ProfileHeader />)
         else {
             setHeader(<RestHeader 
                 pageTitle={data.pageTitle} 
@@ -41,6 +45,7 @@ export const Page = ({data}) => {
             {data.pageName === 'Login' && <Login />}
             {data.pageName === 'Sign Up' && <SignUp />}
             {data.pageName === 'Wrong URL' && <WrongURL />}
+            {data.pageName === 'Profile' && <Profile />}
         </>
     )
 }

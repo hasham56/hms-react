@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { Page } from '../../features/header/Page'
-import { doctorsPageData, aboutPageData, servicesPageData, newsPageData, contactPageData, homePageData, loginData, signUpData, PageNotFound } from '../../features/header/PageData'
+import { doctorsPageData, aboutPageData, servicesPageData, newsPageData, contactPageData, homePageData, loginData, signUpData, pageNotFound, profileData } from '../../features/header/PageData'
 import { Navbar } from '../../features/navbar/Navbar'
 import { Footer } from '../../features/footer/Footer'
 import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux'
 import { LoadingComponent } from './LoadingComponent'
 
-export const App = () => {
-
-  const [load, setLoad] = useState(true)
+export default function App() {
 
   const { authenticated } = useSelector(state => state.auth)
   const { loading } = useSelector(state => state.async)
 
-  useEffect(() => {
-    setLoad(false)
-  }, [])
-
-  if (loading || load) return <LoadingComponent />
+  if (loading) return <LoadingComponent />
 
   return (
     <>
-      <Navbar />
+        <Navbar />
 
         <Switch>
           <Route exact path='/' component={() => <Page data={homePageData} />} />
@@ -35,7 +29,8 @@ export const App = () => {
           <Route path='/contact' component={() => <Page data={contactPageData} />} />
           <Route path='/login' component={() => (authenticated ? <Redirect to='/' /> : <Page data={loginData} />)} />
           <Route path='/signup' component={() => (authenticated ? <Redirect to='/' /> : <Page data={signUpData} />)} />
-          <Route component={() => <Page data={PageNotFound} />} />
+          <Route path='/profile' component={() => (authenticated ? <Page data={profileData} /> : <Redirect to='/' />)} />
+          <Route component={() => <Page data={pageNotFound} />} />
         </Switch>
       
       <ToastContainer />

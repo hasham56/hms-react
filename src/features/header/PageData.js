@@ -54,9 +54,16 @@ export const signUpData = {
     pageLink: 'signup'
 }
 
-export const PageNotFound = {
+export const pageNotFound = {
     pageName: 'Wrong URL',
     pageTitle: 'Page Not Found',
     pageLinkName: '',
     pageLink: ''
+}
+
+export const profileData = {
+    pageName: 'Profile',
+    pageTitle: 'Profile',
+    pageLinkName: 'Profile',
+    pageLink: 'profile'
 }
