@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid, Image, Icon } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 import { useSelector } from 'react-redux'
@@ -7,6 +7,16 @@ import ContentLoader from 'react-content-loader'
 export const ProfileHeader = ({setEditProfile}) => {
 
     const { currentUserProfile } = useSelector(state => state.profile)
+    const [editIcon, moveEditIcon] = useState(false)
+
+    const handleEditProfile = () => {
+        setEditProfile(true)
+        moveEditIcon(true)
+    }
+
+    const handlePhotoEdit = () => {
+
+    }
 
     return (
         <div className='header'>
@@ -18,8 +28,18 @@ export const ProfileHeader = ({setEditProfile}) => {
             </MediaQuery>
             <div className='header-head-profile'>
                 <Grid>
-                    <Grid.Column computer={7} tablet={8} mobile={16}>
-                        <Image id='profile-picture' src={'/assets/header/profilePicture.png'} />
+                    <Grid.Column computer={7} tablet={7} mobile={16}>
+                        <div style={{position: 'relative'}}>
+                            <Image id='profile-picture' src={'/assets/header/profilePicture.png'} />
+                            {editIcon &&
+                                <Icon
+                                    name='pencil'
+                                    circular
+                                    inverted
+                                    onClick={() => handlePhotoEdit()}
+                                    style={{ position: 'absolute', top: '60%', left: '100%', transform: 'translateX(-100%)' }}
+                                />}
+                        </div>
                     </Grid.Column>
                     <Grid.Column computer={9} tablet={8} mobile={16} textAlign='left' style={{position: 'relative'}}>
                         {currentUserProfile ?<div className='profile-data'>
@@ -29,9 +49,10 @@ export const ProfileHeader = ({setEditProfile}) => {
                                         {currentUserProfile.displayName}&emsp;
                                     </p>
                                 </Grid.Column>
-                                <Grid.Column width={2} textAlign='left'>
-                                    <Icon name='pencil' size='small' circular  inverted onClick={() => setEditProfile(true)} />
-                                </Grid.Column>
+                                {!editIcon &&
+                                    <Grid.Column width={2} textAlign='left'>
+                                        <Icon name='pencil' circular  inverted onClick={() => handleEditProfile()} />
+                                    </Grid.Column>}
                             </Grid>
                             <p className='main-text info'>
                                 <Icon name='mail outline' />

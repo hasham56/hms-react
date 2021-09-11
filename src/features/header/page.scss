@@ -140,13 +140,13 @@ $fontLarge: 'Heebo', sans-serif;
   margin-bottom: 5px;
 }
 
-.header-head-profile .profile-data i.inverted.circular.icon {
+.header-head-profile i.inverted.circular.icon {
   color: $white !important;
   background-color: $main !important;
   border: 1px solid $main !important;
 }
 
-.header-head-profile .profile-data i.inverted.circular.icon:hover {
+.header-head-profile i.inverted.circular.icon:hover {
   color: $main !important;
   background-color: $white !important;
   cursor: pointer;
