@@ -1,14 +1,14 @@
 import React from 'react'
-import './account.scss'
 import { useField } from 'formik'
 import { Input, FormField } from 'semantic-ui-react'
 
-export const MyInputField = ({...props}) => {
+export const MyInputField = ({label=false, labelValue='', ...props}) => {
 
     const [field, meta] = useField(props)
 
     return (
         <FormField error={meta.touched && !!meta.error}>
+            {label && <label className='label'>{labelValue}</label>}
             <Input
                 className='input-field'
                 {...field}

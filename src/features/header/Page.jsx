@@ -46,7 +46,7 @@ export const Page = ({data}) => {
             {data.pageName === 'Login' && <Login />}
             {data.pageName === 'Sign Up' && <SignUp />}
             {data.pageName === 'Wrong URL' && <WrongURL />}
-            {data.pageName === 'Profile' && <Profile editProfile={editProfile} />}
+            {data.pageName === 'Profile' && <Profile editProfile={editProfile} setEditProfile={setEditProfile} />}
         </>
     )
 }

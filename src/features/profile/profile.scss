@@ -1,0 +1,97 @@
+$white: #fff;
+$grey: #e9e9e9;
+$darkGrey: #7C7E93;
+$main: #2e95a0;
+$light: #00acb1;
+$dark: #005963;
+$purplish: #fcf7ff;
+$fontSmall: 'Rubik', sans-serif;
+$fontLarge: 'Heebo', sans-serif;
+
+// Edit Profile Form
+
+.editprofile-form {
+    background-color: $white;
+    text-align: center;
+    padding-top: 7%;
+    padding-bottom: 10%;
+}
+
+.editprofile-form .form {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.editprofile-form .input-field input {
+    color: $main !important;
+}
+
+.editprofile-form .submit-btn {
+    width: 50% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.editprofile-form .field {
+    margin-bottom: 20px !important;
+}
+
+.editprofile-form .error-label {
+    margin-bottom: 1px !important;
+}
+
+.editprofile-form .error.field {
+    margin-bottom: 0 !important;
+}
+
+.editprofile-form .login {
+    margin-top: 3%;
+    color: $dark;
+}
+
+.editprofile-form .label {
+    text-align: left;
+    color: $main !important;
+    padding-left: 4%;
+    padding-bottom: 2%;
+}
+
+.editprofile-form .text-area {
+    height: 8em !important;
+}
+
+.editprofile-form .profile-link {
+    color: $main;
+}
+
+.editprofile-form .profile-link:hover {
+    color: $light;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+
+    // Edit form Tablet
+
+    .editprofile-form .form {
+        width: 60%;
+    }
+
+    .editprofile-form .submit-btn {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    //Edit form Mobile
+
+    .editprofile-form .form {
+        width: 70%;
+    }
+
+    .editprofile-form .submit-btn {
+        width: 60% !important;
+    }
+}

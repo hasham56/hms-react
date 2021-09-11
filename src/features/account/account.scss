@@ -38,8 +38,9 @@ $fontLarge: 'Heebo', sans-serif;
     margin-top: 0.2em !important;
 }
 
+.login-form .input-field input,
 .login-form .input-field {
-    color: $dark;
+    color: $dark !important;
 }
 
 .login-form .submit-btn {
@@ -180,8 +181,9 @@ $fontLarge: 'Heebo', sans-serif;
     font-size: 30pt;
 }
 
+.signup-form .input-field input,
 .signup-form .input-field {
-    color: $dark;
+    color: $dark !important;
 }
 
 .signup-form .submit-btn {

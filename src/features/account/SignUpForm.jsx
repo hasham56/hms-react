@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Container, Icon, Button } from 'semantic-ui-react'
-import { MyInputField } from './MyInputFields.jsx'
+import { MyInputField } from '../../app/common/form/MyInputFields'
 import { toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { registerInFirebase } from '../../app/firestore/firebaseService'
@@ -33,7 +33,12 @@ export const SignUpForm = ({ showOptions }) => {
                 <p className='primary-text heading'>Please Enter Your Details</p>
 
                 <Formik
-                    initialValues={{email: '', password: ''}}
+                    initialValues={{
+                        displayName: '',
+                        email: '',
+                        password: '',
+                        confirmPassword: ''
+                    }}
                     validationSchema={
                         Yup.object({
                             displayName: Yup.string().required('Username is required!'),

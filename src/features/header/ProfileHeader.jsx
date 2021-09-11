@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grid, Image, Icon } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 import { useSelector } from 'react-redux'
 import ContentLoader from 'react-content-loader'
+import { useDispatch } from 'react-redux'
+import { changeIconLocationLeft } from './iconReducer'
 
 export const ProfileHeader = ({setEditProfile}) => {
 
+    const dispatch = useDispatch()
     const { currentUserProfile } = useSelector(state => state.profile)
-    const [editIcon, moveEditIcon] = useState(false)
+    const { iconLocation } = useSelector(state => state.icon)
 
     const handleEditProfile = () => {
         setEditProfile(true)
-        moveEditIcon(true)
+        dispatch(changeIconLocationLeft())
     }
 
     const handlePhotoEdit = () => {
@@ -31,7 +34,7 @@ export const ProfileHeader = ({setEditProfile}) => {
                     <Grid.Column computer={7} tablet={7} mobile={16}>
                         <div style={{position: 'relative'}}>
                             <Image id='profile-picture' src={'/assets/header/profilePicture.png'} />
-                            {editIcon &&
+                            {iconLocation === 'left' &&
                                 <Icon
                                     name='pencil'
                                     circular
@@ -49,7 +52,7 @@ export const ProfileHeader = ({setEditProfile}) => {
                                         {currentUserProfile.displayName}&emsp;
                                     </p>
                                 </Grid.Column>
-                                {!editIcon &&
+                                {iconLocation === 'right' &&
                                     <Grid.Column width={2} textAlign='left'>
                                         <Icon name='pencil' circular  inverted onClick={() => handleEditProfile()} />
                                     </Grid.Column>}
@@ -58,9 +61,9 @@ export const ProfileHeader = ({setEditProfile}) => {
                                 <Icon name='mail outline' />
                                 {currentUserProfile.email}&emsp;
                                 <Icon name='phone' />
-                                {currentUserProfile.phone === null ? 'Phone Number' : currentUserProfile.phone}<br />
+                                {currentUserProfile.phone === '' ? 'Phone Number' : currentUserProfile.phone}<br />
                                 <Icon name='map marker alternate' />
-                                {currentUserProfile.address === null ? 'Address' : currentUserProfile.phone}
+                                {currentUserProfile.address === '' ? 'Address' : currentUserProfile.phone}
                             </p>
                         </div> :
                         <div className='profile-data'>
