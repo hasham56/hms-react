@@ -16,20 +16,20 @@ export const EditProfile = ({ setEditProfile }) => {
     const dispatch = useDispatch()
     const { currentUserProfile } = useSelector(state => state.profile)
 
-    const showError = (message) => {
-        toast.error(message, {
-            position: "bottom-center",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined,
-            transition: Slide,
-            theme: 'colored',
-            pauseOnFocusLoss: false
-        })
-    }
+    // const showError = (message) => {
+    //     toast.error(message, {
+    //         position: "bottom-center",
+    //         autoClose: 3000,
+    //         hideProgressBar: true,
+    //         closeOnClick: false,
+    //         pauseOnHover: false,
+    //         draggable: false,
+    //         progress: undefined,
+    //         transition: Slide,
+    //         theme: 'colored',
+    //         pauseOnFocusLoss: false
+    //     })
+    // }
 
     const handleGoBack = () => {
         dispatch(changeIconLocationRight())
