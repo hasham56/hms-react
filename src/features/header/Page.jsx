@@ -17,12 +17,13 @@ import { WrongURL } from '../wrongURL/WrongURL'
 export const Page = ({data}) => {
 
     const [Header, setHeader] = useState(<></>)
+    const [editProfile, setEditProfile] = useState(false)
 
     useEffect(() => {
         if (data.pageName === 'Home')
             setHeader(<HomeHeader />)
         else if (data.pageName === 'Profile')
-            setHeader(<ProfileHeader />)
+            setHeader(<ProfileHeader setEditProfile={setEditProfile} />)
         else {
             setHeader(<RestHeader 
                 pageTitle={data.pageTitle} 
@@ -45,7 +46,7 @@ export const Page = ({data}) => {
             {data.pageName === 'Login' && <Login />}
             {data.pageName === 'Sign Up' && <SignUp />}
             {data.pageName === 'Wrong URL' && <WrongURL />}
-            {data.pageName === 'Profile' && <Profile />}
+            {data.pageName === 'Profile' && <Profile editProfile={editProfile} />}
         </>
     )
 }

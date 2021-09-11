@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { EditProfile } from './EditProfile'
+import { RecentAppointments } from './RecentAppointments'
+import { Appointments } from './Appointments'
 
-export const Profile = () => {
+export const Profile = ({ editProfile }) => {
+    
+    const [appointments, showAppointments] = useState(false)
 
     return (
-        <h1>Profile Page</h1>
+        <>
+            {editProfile ?
+                <EditProfile /> :
+                (appointments ?
+                    <Appointments /> :
+                    <RecentAppointments showAppointments={showAppointments} />)
+            }
+        </>
     )
 }

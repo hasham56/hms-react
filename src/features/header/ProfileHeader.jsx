@@ -4,7 +4,7 @@ import MediaQuery from 'react-responsive'
 import { useSelector } from 'react-redux'
 import ContentLoader from 'react-content-loader'
 
-export const ProfileHeader = () => {
+export const ProfileHeader = ({setEditProfile}) => {
 
     const { currentUserProfile } = useSelector(state => state.profile)
 
@@ -30,7 +30,7 @@ export const ProfileHeader = () => {
                                     </p>
                                 </Grid.Column>
                                 <Grid.Column width={2} textAlign='left'>
-                                    <Icon name='pencil' size='small' circular  inverted />
+                                    <Icon name='pencil' size='small' circular  inverted onClick={() => setEditProfile(true)} />
                                 </Grid.Column>
                             </Grid>
                             <p className='main-text info'>
