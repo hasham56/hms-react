@@ -68,3 +68,11 @@ export async function updatePassword(profile) {
         throw error
     }
 }
+
+export async function sendPasswordResetEmail(data) {
+    try {
+        return await firebase.auth().sendPasswordResetEmail(data.email)
+    } catch (error) {
+        throw error
+    }
+}
