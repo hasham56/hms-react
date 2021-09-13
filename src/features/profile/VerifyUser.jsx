@@ -1,15 +1,21 @@
 import React from 'react'
-import './account.scss'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Container, Icon, Button, Grid } from 'semantic-ui-react'
+import { Container, Icon, Button } from 'semantic-ui-react'
 import { MyInputField } from '../../app/common/form/MyInputFields'
 import { signInWithEmail } from '../../app/firestore/firebaseService'
 import { toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { changeIconLocationRight } from '../header/iconReducer'
 
-export const Login = () => {
+export const VerifyUser = () => {
+
+    const history = useHistory()
+    const dispatch = useDispatch()
+    const { userEmail } = useSelector(state => state.profile)
 
     const showError = (message) => {
         toast.error(message, {
@@ -29,11 +35,11 @@ export const Login = () => {
     return (
         <div className='login-form'>
             <Container>
-                <p className='primary-text heading'>Please Enter Your Details</p>
+                <p className='primary-text heading'>Please Verify Your Identity</p>
                 
                 <Formik
                     initialValues={{
-                        email: '',
+                        email: userEmail,
                         password: ''
                     }}
                     validationSchema={
@@ -48,22 +54,25 @@ export const Login = () => {
                     onSubmit={async (values, {setSubmitting}) => {
                         try {
                             await signInWithEmail(values)
+                            dispatch(changeIconLocationRight())
+                            history.push('/resetpassword')
                         } catch (error) {
                             if (error.code === 'auth/network-request-failed')
                                 showError('Check your internet connection!')
                             else
-                                showError('Wrong email or password!')
+                                showError('Wrong password!')
                         } finally {
                             setSubmitting(false)
                         }
                         }
                     }
                 >
-                    {({isSubmitting, isValid, dirty}) => (
+                    {({isSubmitting, isValid}) => (
                         <Form className='ui form'>
                             <MyInputField
                                 name='email'
                                 placeholder='Enter your email'
+                                disabled
                                 icon={<Icon className='icon' name='user' />} />
                             <MyInputField
                                 name='password'
@@ -74,7 +83,7 @@ export const Login = () => {
                             <Button
                                 type='submit'
                                 loading={isSubmitting}
-                                disabled={!isValid || !dirty || isSubmitting}
+                                disabled={!isValid || isSubmitting}
                                 fluid
                                 size='large'
                                 className='btn-secondary submit-btn'
@@ -83,22 +92,7 @@ export const Login = () => {
                         </Form>
                     )}
                 </Formik>
-                <div className='platform-option'>
-                    <div className='divider' style={{ display: 'flex', textAlign: 'center' }}>
-                        <div className='horizontal-line' style={{ marginRight: '5px' }}></div>
-                        <p className='main-text' style={{ marginBottom: '0' }}>OR</p>
-                        <div className='horizontal-line' style={{ marginLeft: '5px' }}></div>
-                    </div>
-                    <Grid>
-                        <Grid.Column mobile={16} computer='8' textAlign='right'>
-                            <Button className='btn-primary platform-btn' icon='google' content='Continue with google' />
-                        </Grid.Column>
-                        <Grid.Column mobile={16} computer='8' textAlign='left'>
-                            <Button className='btn-primary platform-btn' icon='facebook' content='Continue with facebook' />
-                        </Grid.Column>
-                    </Grid>
-                </div>
-                <p className='main-text sign-up'>Don't have an account? <Link className='signup-link' to='/signup'>Sign Up</Link></p>
+                <p className='main-text sign-up'>Changed your mind? <Link className='login-link' to='/login'>Login</Link></p>
             </Container>
         </div>
     )

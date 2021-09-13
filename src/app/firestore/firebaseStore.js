@@ -6,9 +6,9 @@ export const setUserProfileData = (user) => {
     return db.collection('users').doc(user.uid).set({
         displayName: user.displayName,
         email: user.email,
-        photoURL: user.photoURL || null,
-        phone: user.phone || null,
-        address: user.address || null,
+        photoURL: user.photoURL || '',
+        phone: user.phone || '',
+        address: user.address || '',
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
 }

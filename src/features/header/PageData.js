@@ -67,3 +67,17 @@ export const profileData = {
     pageLinkName: 'Profile',
     pageLink: 'profile'
 }
+
+export const verifyUser = {
+    pageName: 'Verify',
+    pageTitle: 'User Verification',
+    pageLinkName: 'Verification',
+    pageLink: 'verification'
+}
+
+export const resetPassword = {
+    pageName: 'Reset',
+    pageTitle: 'Reset Password',
+    pageLinkName: 'Reset Password',
+    pageLink: 'resetpassword'
+}

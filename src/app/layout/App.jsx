@@ -2,7 +2,7 @@ import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { Page } from '../../features/header/Page'
-import { doctorsPageData, aboutPageData, servicesPageData, newsPageData, contactPageData, homePageData, loginData, signUpData, pageNotFound, profileData } from '../../features/header/PageData'
+import { doctorsPageData, aboutPageData, servicesPageData, newsPageData, contactPageData, homePageData, loginData, signUpData, pageNotFound, profileData, verifyUser, resetPassword } from '../../features/header/PageData'
 import { Navbar } from '../../features/navbar/Navbar'
 import { Footer } from '../../features/footer/Footer'
 import { ToastContainer } from 'react-toastify'
@@ -13,6 +13,7 @@ export default function App() {
 
   const { authenticated } = useSelector(state => state.auth)
   const { loading } = useSelector(state => state.async)
+  const { changePassword } = useSelector(state => state.profile)
 
   if (loading) return <LoadingComponent />
 
@@ -30,6 +31,8 @@ export default function App() {
           <Route path='/login' component={() => (authenticated ? <Redirect to='/' /> : <Page data={loginData} />)} />
           <Route path='/signup' component={() => (authenticated ? <Redirect to='/' /> : <Page data={signUpData} />)} />
           <Route path='/profile' component={() => (authenticated ? <Page data={profileData} /> : <Redirect to='/' />)} />
+          <Route path='/verification' component={() => ((changePassword && !authenticated) ? <Page data={verifyUser} /> : <Redirect to='/' />)} />
+          <Route path='/resetpassword' component={() => ((changePassword && authenticated) ? <Page data={resetPassword} /> : <Redirect to='/' />)} />
           <Route component={() => <Page data={pageNotFound} />} />
         </Switch>
       

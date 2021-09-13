@@ -18,9 +18,8 @@ $fontLarge: 'Heebo', sans-serif;
 }
 
 .editprofile-form .form {
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 60%;
+    margin-left: 29%;
 }
 
 .editprofile-form .input-field input {
@@ -70,12 +69,28 @@ $fontLarge: 'Heebo', sans-serif;
     cursor: pointer;
 }
 
+.editprofile-form .change-password {
+    position: absolute;
+    top: 40%;
+    left: 72%;
+    transform: translateY(-35%);
+
+    color: $main;
+    font-weight: bold;
+}
+
+.editprofile-form .change-password:hover {
+    color: $light;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 992px) {
 
     // Edit form Tablet
 
     .editprofile-form .form {
-        width: 60%;
+        width: 80%;
+        margin-left: 22%;
     }
 
     .editprofile-form .submit-btn {
@@ -88,7 +103,8 @@ $fontLarge: 'Heebo', sans-serif;
     //Edit form Mobile
 
     .editprofile-form .form {
-        width: 70%;
+        width: 100%;
+        margin-left: 15%;
     }
 
     .editprofile-form .submit-btn {

@@ -1,6 +1,8 @@
 import firebase from "../config/firebase"
 import { setUserProfileData } from "./firebaseStore"
 
+const db = firebase.firestore()
+
 export const signInWithEmail = (creds) => {
     return firebase
         .auth()
@@ -17,7 +19,7 @@ export async function registerInFirebase(creds) {
             .auth()
             .createUserWithEmailAndPassword(creds.email, creds.password)
         await result.user.updateProfile({
-            displayName: creds.displayName
+            displayName: creds.displayName,
         })
         return await setUserProfileData(result.user)
     } catch (error) {
@@ -41,5 +43,28 @@ export const dataFromSnapshot = (snapshot) => {
     return {
         ...data,
         id: snapshot.id
+    }
+}
+
+export async function updateUserProfile(profile) {
+
+    const user = firebase.auth().currentUser
+
+    try {
+        await user.updateEmail(profile.email)
+        return await db.collection('users').doc(user.uid).update(profile)
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function updatePassword(profile) {
+
+    const user = firebase.auth().currentUser
+
+    try {
+        return await user.updatePassword(profile.password)
+    } catch (error) {
+        throw error
     }
 }
