@@ -1,17 +1,8 @@
-import React, { useState } from "react";
-import { Button } from 'semantic-ui-react'
-import Cropper from "react-cropper";
-import "cropperjs/dist/cropper.css";
+import React from "react";
+import Cropper from "react-cropper"
+import "cropperjs/dist/cropper.css"
 
-export const PhotoCropper = ({ setImage, imagePreview }) => {
-    
-    const [cropper, setCropper] = useState()
-
-    const getCropData = () => {
-        if (typeof cropper !== "undefined") {
-            setImage(cropper.getCroppedCanvas().toDataURL());
-        }
-    }
+export const PhotoCropper = ({ imagePreview, setCropper }) => {
 
     return (
         <div>

@@ -14,6 +14,7 @@ export const ProfileHeader = ({ setEditProfile }) => {
     const dispatch = useDispatch()
     const { currentUserProfile } = useSelector(state => state.profile)
     const { iconLocation } = useSelector(state => state.icon)
+    const { photoSource } = useSelector(state => state.photo)
 
     const handleEditProfile = () => {
         setEditProfile(true)
@@ -37,7 +38,7 @@ export const ProfileHeader = ({ setEditProfile }) => {
                 <Grid>
                     <Grid.Column computer={7} tablet={7} mobile={16}>
                         <div style={{position: 'relative'}}>
-                            <Image id='profile-picture' src={'/assets/header/profilePicture.png'} />
+                            <Image id='profile-picture' src={photoSource !== null ? photoSource : '/assets/header/profilePicture.png'} />
                             {iconLocation === 'left' &&
                                 <Icon
                                     name='pencil'

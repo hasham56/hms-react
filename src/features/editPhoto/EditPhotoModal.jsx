@@ -3,19 +3,30 @@ import './modal.scss'
 import { Button, Modal } from 'semantic-ui-react'
 import { PhotoDropzone } from './PhotoDropzone'
 import { PhotoCropper } from './PhotoCropper'
+import { updatePhotoSource } from './photoReducer'
+import { useDispatch } from 'react-redux'
 
 export const EditPhotoModal = ({ open, setOpen }) => {
 
     const [files, setFiles] = useState([])
-    const [image, setImage] = useState(null)
+    const [cropper, setCropper] = useState()
+
+    const dispatch = useDispatch()
+
+    const setCroppedImage = () => {
+        if (typeof cropper !== "undefined") {
+            dispatch(updatePhotoSource(cropper.getCroppedCanvas().toDataURL()))
+        }
+    }
 
     const cancelUpload = () => {
         setFiles([])
-        setImage(null)
+        dispatch(updatePhotoSource(null))
         setOpen(false)
     }
 
-    const uploadImage = () => {
+    const uploadImage = async () => {
+        setCroppedImage()
         setOpen(false)
     }
     
@@ -34,7 +45,7 @@ export const EditPhotoModal = ({ open, setOpen }) => {
                 <Modal.Description style={{textAlign: 'center'}}>
                     {files.length === 0 ?
                         <PhotoDropzone setFiles={setFiles} /> :
-                        <PhotoCropper setImage={setImage} imagePreview={files[0].preview} />}
+                        <PhotoCropper imagePreview={files[0].preview} setCropper={setCropper} />}
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
