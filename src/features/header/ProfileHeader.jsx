@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid, Image, Icon } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 import { useSelector } from 'react-redux'
 import ContentLoader from 'react-content-loader'
 import { useDispatch } from 'react-redux'
 import { changeIconLocationLeft } from './iconReducer'
+import { EditPhotoModal } from '../editPhoto/EditPhotoModal'
 
-export const ProfileHeader = ({setEditProfile}) => {
+export const ProfileHeader = ({ setEditProfile }) => {
+    
+    const [openPhotoModal, setOpenPhotoModal] = useState(false)
 
     const dispatch = useDispatch()
     const { currentUserProfile } = useSelector(state => state.profile)
@@ -18,11 +21,12 @@ export const ProfileHeader = ({setEditProfile}) => {
     }
 
     const handlePhotoEdit = () => {
-
+        setOpenPhotoModal(true)
     }
 
     return (
         <div className='header'>
+            <EditPhotoModal open={openPhotoModal} setOpen={setOpenPhotoModal} />
             <MediaQuery minWidth={993}>
                 <Image className='header-image' src={'/assets/header/maskGroupRestLargeScreen.png'} />
             </MediaQuery>
@@ -45,7 +49,7 @@ export const ProfileHeader = ({setEditProfile}) => {
                         </div>
                     </Grid.Column>
                     <Grid.Column computer={9} tablet={8} mobile={16} textAlign='left' style={{position: 'relative'}}>
-                        {currentUserProfile ?<div className='profile-data'>
+                        {currentUserProfile ? <div className='profile-data'>
                             <Grid>
                                 <Grid.Column width={14}>
                                     <p className='primary-text display-name'>

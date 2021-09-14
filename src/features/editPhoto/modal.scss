@@ -1,0 +1,49 @@
+$white: #fff;
+$grey: #e9e9e9;
+$darkGrey: #7C7E93;
+$main: #2e95a0;
+$light: #00acb1;
+$dark: #005963;
+$purplish: #fcf7ff;
+$fontSmall: 'Rubik', sans-serif;
+$fontLarge: 'Heebo', sans-serif;
+
+.edit-photo-modal .title {
+    color: $dark !important;
+}
+
+.edit-photo-modal .header {
+    color: $dark !important;
+}
+
+.edit-photo-modal .dropzone {
+    height: 350px;
+    position: relative;
+    border: dashed 2px $darkGrey;
+    border-radius: 5px;
+    background-color: $grey;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.edit-photo-modal .dropzone:hover{
+    background-color: #fafafa !important;
+    cursor: pointer;
+    transition: background 0.5s ease;
+}
+
+.edit-photo-modal .dropzone-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.edit-photo-modal .upload-icon {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.edit-photo-modal .drop-image {
+    margin-bottom: 30px !important;
+}
