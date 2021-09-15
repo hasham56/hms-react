@@ -76,3 +76,10 @@ export async function sendPasswordResetEmail(data) {
         throw error
     }
 }
+
+export function updateToFirebaseStorage(file, filename) {
+    const user = firebase.auth().currentUser
+    const storageRef = firebase.storage().ref()
+    
+    return storageRef.child(`${user.uid}/user_profile_photo/${filename}`).put(file)
+}

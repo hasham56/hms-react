@@ -9,11 +9,12 @@ import 'react-toastify/dist/ReactToastify.css'
 import { changeIconLocationRight } from '../header/iconReducer'
 import { useSelector } from 'react-redux'
 import { MyTextArea } from '../../app/common/form/MyTextArea'
-import { signOutFirebase, updateUserProfile } from '../../app/firestore/firebaseService'
+import { signOutFirebase, updateToFirebaseStorage, updateUserProfile } from '../../app/firestore/firebaseService'
 import { setChangePassword } from './profileActions'
 import { signOutUser } from '../account/authActions'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
+import { updateUserPhoto } from '../../app/firestore/firebaseStore'
 
 export const EditProfile = ({ setEditProfile }) => {
     
@@ -21,6 +22,7 @@ export const EditProfile = ({ setEditProfile }) => {
     const history = useHistory()
 
     const { currentUserProfile } = useSelector(state => state.profile)
+    const { filename, photoSource } = useSelector(state => state.photo)
 
     const showError = (message) => {
         toast.error(message, {
@@ -87,14 +89,30 @@ export const EditProfile = ({ setEditProfile }) => {
                     }
                     onSubmit={async (values, {setSubmitting}) => {
                         try {
-                            dispatch(changeIconLocationRight())
                             await updateUserProfile(values)
+                            if (photoSource !== null) {
+                                photoSource.toBlob(blob => {
+                                    const uploadedImage = updateToFirebaseStorage(blob, filename)
+                                    uploadedImage.on('state_changed', () => {
+                                    uploadedImage.snapshot.ref.getDownloadURL()
+                                        .then(downloadURL => {
+                                            updateUserPhoto(downloadURL)
+                                                .catch(error => {
+                                                    showError(error)
+                                                })
+                                    })
+                                })
+                                }, 'image/png')
+                            }
+                            dispatch(changeIconLocationRight())
                             showSuccess('Changes Saved!')
+                            history.push('/')
                         } catch (error) {
                             if (error.code === 'auth/network-request-failed')
                                 showError('Check your internet connection!')
                             else
                                 showError('Updating profile data failed!')
+                            console.log(error)
                         } finally {
                             setSubmitting(false)
                         }

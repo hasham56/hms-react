@@ -38,7 +38,14 @@ export const ProfileHeader = ({ setEditProfile }) => {
                 <Grid>
                     <Grid.Column computer={7} tablet={7} mobile={16}>
                         <div style={{position: 'relative'}}>
-                            <Image id='profile-picture' src={photoSource !== null ? photoSource : '/assets/header/profilePicture.png'} />
+                            <Image id='profile-picture'
+                                src={photoSource
+                                    ? photoSource.toDataURL()
+                                    : (currentUserProfile ?
+                                        currentUserProfile.photoURL :
+                                        '/assets/header/profilePicture.png'
+                                    )}
+                            />
                             {iconLocation === 'left' &&
                                 <Icon
                                     name='pencil'

@@ -9,7 +9,8 @@ export const updatePhotoSource = (source) => {
 }
 
 const initialState = {
-    photoSource: null
+    photoSource: null,
+    filename: ''
 }
 
 export const photoReducer = (state = initialState, {type, payload}) => {
@@ -18,7 +19,8 @@ export const photoReducer = (state = initialState, {type, payload}) => {
         case UPDATE_PHOTO_SOURCE:
             return {
                 ...state,
-                photoSource: payload
+                photoSource: payload.photoSource,
+                filename: payload.filename
             }
         default: 
             return state

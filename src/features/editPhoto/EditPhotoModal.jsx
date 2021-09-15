@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import cuid from 'cuid'
 import './modal.scss'
 import { Button, Modal } from 'semantic-ui-react'
+import { getFileExtension } from '../../app/common/utils/utils';
 import { PhotoDropzone } from './PhotoDropzone'
 import { PhotoCropper } from './PhotoCropper'
 import { updatePhotoSource } from './photoReducer'
@@ -13,20 +15,24 @@ export const EditPhotoModal = ({ open, setOpen }) => {
 
     const dispatch = useDispatch()
 
-    const setCroppedImage = () => {
-        if (typeof cropper !== "undefined") {
-            dispatch(updatePhotoSource(cropper.getCroppedCanvas().toDataURL()))
-        }
-    }
-
     const cancelUpload = () => {
         setFiles([])
-        dispatch(updatePhotoSource(null))
+        dispatch(updatePhotoSource({
+            photoSource: null,
+            filename: ''
+        }))
         setOpen(false)
     }
 
     const uploadImage = async () => {
-        setCroppedImage()
+        if (typeof cropper !== "undefined") {
+            const filename = cuid() + '.' + getFileExtension(files[0].name)
+            
+            dispatch(updatePhotoSource({
+                    photoSource: cropper.getCroppedCanvas(),
+                    filename: filename
+            }))
+        }
         setOpen(false)
     }
     
@@ -50,13 +56,13 @@ export const EditPhotoModal = ({ open, setOpen }) => {
             </Modal.Content>
             <Modal.Actions>
                 <Button
-                    content="Cancel"
+                    content='Cancel'
                     icon='checkmark'
                     onClick={() => cancelUpload()}
                     className='btn-primary handle-btn'
                 />
                 <Button
-                    content="Save"
+                    content='Done'
                     icon='checkmark'
                     onClick={() => uploadImage()}
                     className='btn-secondary handle-btn'
