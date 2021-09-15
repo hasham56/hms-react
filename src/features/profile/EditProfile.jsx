@@ -6,17 +6,17 @@ import { Container, Button } from 'semantic-ui-react'
 import { MyInputField } from '../../app/common/form/MyInputFields'
 import { toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { changeIconLocationRight } from '../header/iconReducer'
+import { changeIconLocation } from '../header/iconReducer'
 import { useSelector } from 'react-redux'
 import { MyTextArea } from '../../app/common/form/MyTextArea'
 import { signOutFirebase, updateToFirebaseStorage, updateUserProfile } from '../../app/firestore/firebaseService'
-import { setChangePassword } from './profileActions'
+import { setChangePassword, setEditProfile } from './profileActions'
 import { signOutUser } from '../account/authActions'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 import { updateUserPhoto } from '../../app/firestore/firebaseStore'
 
-export const EditProfile = ({ setEditProfile }) => {
+export const EditProfile = () => {
     
     const dispatch = useDispatch()
     const history = useHistory()
@@ -55,15 +55,15 @@ export const EditProfile = ({ setEditProfile }) => {
     }
 
     const handleGoBack = () => {
-        dispatch(changeIconLocationRight())
-        setEditProfile(false)
+        dispatch(changeIconLocation('right'))
+        dispatch(setEditProfile(false))
     }
 
     const handleChangePassword = async () => {
         dispatch(setChangePassword({changePassword: true, userEmail: currentUserProfile.email}))
         await signOutFirebase()
         dispatch(signOutUser())
-        dispatch(changeIconLocationRight())
+        dispatch(changeIconLocation('right'))
         history.push('/verification')
     }
 
@@ -104,9 +104,9 @@ export const EditProfile = ({ setEditProfile }) => {
                                 })
                                 }, 'image/png')
                             }
-                            dispatch(changeIconLocationRight())
+                            dispatch(changeIconLocation('right'))
+                            dispatch(setEditProfile(false))
                             showSuccess('Changes Saved!')
-                            history.push('/')
                         } catch (error) {
                             if (error.code === 'auth/network-request-failed')
                                 showError('Check your internet connection!')

@@ -1,10 +1,10 @@
-import { LISTEN_TO_CURRENT_USER_PROFILE } from './profileConstants'
-import { CHANGE_PASSWORD } from './profileConstants'
+import { EDIT_PROFILE, LISTEN_TO_CURRENT_USER_PROFILE, CHANGE_PASSWORD } from './profileConstants'
 
 const initialState = {
     currentUserProfile: null,
     changePassword: false,
-    userEmail: null
+    userEmail: null,
+    editProfile: false
 }
 
 export const profileReducer = (state=initialState, {type, payload}) => {
@@ -20,6 +20,11 @@ export const profileReducer = (state=initialState, {type, payload}) => {
                 ...state,
                 changePassword: payload.changePassword,
                 userEmail: payload.userEmail
+            }
+        case EDIT_PROFILE:
+            return {
+                ...state,
+                editProfile: payload
             }
         default: {
             return state

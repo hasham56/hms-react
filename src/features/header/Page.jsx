@@ -20,13 +20,12 @@ import { ForgotPassword } from '../profile/ForgotPassword'
 export const Page = ({data}) => {
 
     const [Header, setHeader] = useState(<></>)
-    const [editProfile, setEditProfile] = useState(false)
 
     useEffect(() => {
         if (data.pageName === 'Home')
             setHeader(<HomeHeader />)
         else if (data.pageName === 'Profile')
-            setHeader(<ProfileHeader setEditProfile={setEditProfile} />)
+            setHeader(<ProfileHeader />)
         else {
             setHeader(<RestHeader 
                 pageTitle={data.pageTitle} 
@@ -49,7 +48,7 @@ export const Page = ({data}) => {
             {data.pageName === 'Login' && <Login />}
             {data.pageName === 'Sign Up' && <SignUp />}
             {data.pageName === 'Wrong URL' && <WrongURL />}
-            {data.pageName === 'Profile' && <Profile editProfile={editProfile} setEditProfile={setEditProfile} />}
+            {data.pageName === 'Profile' && <Profile />}
             {data.pageName === 'Verify' && <VerifyUser />}
             {data.pageName === 'Reset' && <ResetPassword />}
             {data.pageName === 'Forgot Password' && <ForgotPassword />}

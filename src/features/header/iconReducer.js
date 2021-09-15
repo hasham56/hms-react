@@ -1,17 +1,10 @@
-const CHANGE_ICON_LOCATION_RIGHT = 'CHANGE_ICON_LOCATION_RIGHT'
-const CHANGE_ICON_LOCATION_LEFT = 'CHANGE_ICON_LOCATION_LEFT'
+const CHANGE_ICON_LOCATION = 'CHANGE_ICON_LOCATION'
 
-export const changeIconLocationRight = () => {
-
-    return {
-        type: CHANGE_ICON_LOCATION_RIGHT
-    }
-}
-
-export const changeIconLocationLeft = () => {
+export const changeIconLocation = (value) => {
 
     return {
-        type: CHANGE_ICON_LOCATION_LEFT
+        type: CHANGE_ICON_LOCATION,
+        payload: value
     }
 }
 
@@ -19,18 +12,13 @@ const initialState = {
     iconLocation: 'right'
 }
 
-export const iconReducer = (state = initialState, {type}) => {
+export const iconReducer = (state = initialState, {type, payload}) => {
 
     switch (type) {
-        case CHANGE_ICON_LOCATION_LEFT:
+        case CHANGE_ICON_LOCATION:
             return {
                 ...state,
-                iconLocation: 'left'
-            }
-        case CHANGE_ICON_LOCATION_RIGHT:
-            return {
-                ...state,
-                iconLocation: 'right'
+                iconLocation: payload
             }
         default: 
             return state

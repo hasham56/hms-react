@@ -7,7 +7,7 @@ import { signOutUser } from '../account/authActions'
 import { signOutFirebase } from '../../app/firestore/firebaseService'
 import { toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { changeIconLocationRight } from '../header/iconReducer'
+import { changeIconLocation } from '../header/iconReducer'
 
 export const Navbar = () => {
 
@@ -45,7 +45,7 @@ export const Navbar = () => {
         try {
             await signOutFirebase()
             dispatch(signOutUser())
-            dispatch(changeIconLocationRight())
+            dispatch(changeIconLocation('right'))
             history.push('/login')
         }
         catch (error) {

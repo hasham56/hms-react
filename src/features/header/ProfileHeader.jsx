@@ -4,10 +4,11 @@ import MediaQuery from 'react-responsive'
 import { useSelector } from 'react-redux'
 import ContentLoader from 'react-content-loader'
 import { useDispatch } from 'react-redux'
-import { changeIconLocationLeft } from './iconReducer'
+import { changeIconLocation } from './iconReducer'
 import { EditPhotoModal } from '../editPhoto/EditPhotoModal'
+import { setEditProfile } from '../profile/profileActions'
 
-export const ProfileHeader = ({ setEditProfile }) => {
+export const ProfileHeader = () => {
     
     const [openPhotoModal, setOpenPhotoModal] = useState(false)
 
@@ -17,8 +18,8 @@ export const ProfileHeader = ({ setEditProfile }) => {
     const { photoSource } = useSelector(state => state.photo)
 
     const handleEditProfile = () => {
-        setEditProfile(true)
-        dispatch(changeIconLocationLeft())
+        dispatch(setEditProfile(true))
+        dispatch(changeIconLocation('left'))
     }
 
     const handlePhotoEdit = () => {

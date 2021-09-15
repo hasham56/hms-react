@@ -9,7 +9,7 @@ import { toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { changeIconLocationRight } from '../header/iconReducer'
+import { changeIconLocation } from '../header/iconReducer'
 
 export const VerifyUser = () => {
 
@@ -54,7 +54,7 @@ export const VerifyUser = () => {
                     onSubmit={async (values, {setSubmitting}) => {
                         try {
                             await signInWithEmail(values)
-                            dispatch(changeIconLocationRight())
+                            dispatch(changeIconLocation('right'))
                             history.push('/resetpassword')
                         } catch (error) {
                             if (error.code === 'auth/network-request-failed')
