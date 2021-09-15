@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Container, Icon, Button, Grid } from 'semantic-ui-react'
 import { MyInputField } from '../../app/common/form/MyInputFields'
-import { signInWithEmail } from '../../app/firestore/firebaseService'
+import { signInWithEmail, socialLogin } from '../../app/firestore/firebaseService'
 import { toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -24,6 +24,10 @@ export const Login = () => {
             theme: 'colored',
             pauseOnFocusLoss: false
         })
+    }
+
+    const handleSocialLogin = (provider) => {
+        socialLogin(provider)
     }
 
     return (
@@ -91,10 +95,20 @@ export const Login = () => {
                     </div>
                     <Grid>
                         <Grid.Column mobile={16} computer='8' textAlign='right'>
-                            <Button className='btn-primary platform-btn' icon='google' content='Continue with google' />
+                            <Button
+                                className='btn-primary platform-btn'
+                                icon='google'
+                                content='Continue with google'
+                                onClick={() => handleSocialLogin('google')}
+                            />
                         </Grid.Column>
                         <Grid.Column mobile={16} computer='8' textAlign='left'>
-                            <Button className='btn-primary platform-btn' icon='facebook' content='Continue with facebook' />
+                            <Button
+                                className='btn-primary platform-btn'
+                                icon='facebook'
+                                content='Continue with facebook'
+                                onClick={() => handleSocialLogin('facebook')}
+                            />
                         </Grid.Column>
                     </Grid>
                 </div>

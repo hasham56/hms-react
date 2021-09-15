@@ -83,3 +83,25 @@ export function updateToFirebaseStorage(file, filename) {
     
     return storageRef.child(`${user.uid}/user_profile_photo/${filename}`).put(file)
 }
+
+export async function socialLogin(selectedProvider) {
+    let provider;
+
+    if (selectedProvider === 'google') {
+        provider = new firebase.auth.GoogleAuthProvider()
+    }
+
+    if (selectedProvider === 'facebook') {
+        provider = new firebase.auth.FacebookAuthProvider()
+    }
+
+    try {
+        const result = await firebase.auth().signInWithPopup(provider)
+        console.log(result)
+        if (result.additionalUserInfo.isNewUser) {
+            await setUserProfileData(result.user)
+        }
+    } catch (error) {
+        throw error
+    }
+}
