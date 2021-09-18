@@ -1,7 +1,7 @@
 import firebase from '../../app/config/firebase'
 import { getUserProfile } from '../../app/firestore/firebaseStore'
 import { listenToCurrentUserProfile } from '../profile/profileActions'
-import { dataFromSnapshot } from '../../app/firestore/firebaseService'
+import { dataFromSnapshot } from '../../app/firestore/firebaseStore'
 import { SIGN_IN_USER, SIGN_OUT_USER } from './authConstants'
 import { asyncActionStart, asyncActionFinish } from '../../app/async/asyncReducer'
 

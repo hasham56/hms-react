@@ -1,0 +1,240 @@
+$white: #fff;
+$grey: #e9e9e9;
+$darkGrey: #7C7E93;
+$main: #2e95a0;
+$light: #00acb1;
+$dark: #005963;
+$purplish: #fcf7ff;
+$fontSmall: 'Rubik', sans-serif;
+$fontLarge: 'Heebo', sans-serif;
+
+.doctors-list {
+    background-color: $white;
+    padding-top: 7%;
+    padding-bottom: 10%;
+}
+
+.doctors-list .text {
+    padding: 5px;
+    padding-left: 25px;
+    margin-bottom: 0px;
+    color: $dark;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: $purplish;
+}
+
+// Top Sort Bar
+
+.doctors-list .top-sort {
+    display: flex !important;
+    background-color: $purplish;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#root .doctors-list .top-sort .push {
+    border-top-left-radius: 0;
+    margin-right: 0;
+    padding-right: 0.25em !important;
+    padding-top: 6px !important;
+    border-left: 2px solid $grey !important;
+}
+
+#root .doctors-list .top-sort i {
+    margin-top: 6px;
+}
+
+// Checkboxes
+
+.doctors-list .filter-area {
+    border: 2px solid $purplish;
+    border-top: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.doctors-list .filter-area .checkbox {
+    padding: 10px 25px;
+    display: block;
+    color: $dark !important;
+}
+
+.doctors-list .checkbox label,
+.doctors-list .checkbox input:focus~label {
+    color: $dark;
+}
+
+.doctors-list .checkbox label:focus,
+.doctors-list .checkbox input:focus~label:hover,
+.doctors-list .checkbox label:hover {
+    color: $main;
+}
+
+.doctors-list .checkbox label::before,
+.doctors-list .checkbox label:focus::before,
+.doctors-list .checkbox input:focus~label::before,
+.doctors-list .checkbox label::after {
+    border: 2px solid $light;
+    border-radius: .21428571rem;
+}
+
+.doctors-list .checkbox label:hover::before,
+.doctors-list .checkbox label:focus:hover::before,
+.doctors-list .checkbox label:hover::after {
+    border: 2px solid $main;
+    border-radius: .21428571rem;
+}
+
+.doctors-list .checkbox input:checked~label::after,
+.doctors-list .checkbox input:focus:checked~label::after {
+    color: $light;
+}
+
+// Slider
+
+.doctors-list .slider-holder {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.doctors-list .slider-holder .slider {
+    padding-top: 10px;
+}
+
+.doctors-list .slider-holder .slider-text {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.rc-slider-handle:hover {
+    cursor: pointer;
+}
+
+.rc-slider-handle-dragging {
+    box-shadow: 0 0 5px $main !important;
+}
+
+// Pagination
+
+.doctors-list .pagination {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.doctors-list .pagination .btn {
+    background-color: #E5F7F7 !important;
+    color: $dark !important;
+    font-size: 13pt;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 10px 15px;
+    margin: 0.5em;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.doctors-list .pagination .btn.active {
+    background-color: $main !important;
+    color: $white !important;
+}
+
+.doctors-list .pagination .btn i {
+    margin: 0 !important;
+    width: 100%;
+}
+
+// Doctors
+
+.doctor {
+    margin-top: 6% !important;
+    padding: 0 !important;
+    border: 1px solid $grey;
+    border-radius: 5px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.doctor .image-holder {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.doctor .image-holder .image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.doctor .portion {
+    padding: 15px;
+}
+
+.doctor .division {
+    border-right: 2px solid $grey;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.doctor .name {
+    font-size: 13pt;
+    font-family: $fontSmall;
+    color: $dark;
+    margin-bottom: 0;
+}
+
+.doctor .speciality {
+    font-size: 11pt;
+    font-family: $fontLarge;
+    color: $dark;
+    margin-bottom: 0.50em;
+}
+
+.doctor .university {
+    font-family: $fontLarge;
+}
+
+.doctor .viewmore-btn {
+    padding: 12px 22px 12px 22px !important; 
+    font-size: 9pt;
+    margin-left: 0 !important;
+    background-color: $white !important;
+}
+
+.doctor .viewmore-btn:hover {
+    background-color: $light !important;
+}
+
+.doctor .favourite-btn {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    color: $light !important;
+}
+
+.doctor .favourite-btn:hover {
+    color: $white !important;
+}
+
+.doctor .review .main-text {
+    margin-bottom: 0;
+}
+
+.doctor .review .icon {
+    color: $light;
+}
+
+.doctor .review .star {
+    color: $dark;
+}
+
+.doctor .review .stars {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    margin-bottom: 25px;
+}
