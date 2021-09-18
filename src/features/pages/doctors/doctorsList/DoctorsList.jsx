@@ -24,7 +24,9 @@ export const DoctorsList = ({doctorsList}) => {
                     </Grid.Column>
                     <Grid.Column className='portion division' computer={7}>
                         <p className='main-text name'>{doctor.name}</p>
-                        <p className='main-text speciality'>{doctor.specialty}</p>
+                        <p className='main-text speciality'>
+                            {doctor.specialty.map((specialty, i) => `${specialty}${i !== doctor.specialty.length - 1 ? ' & ' : ''}`)}
+                        </p>
                         <p className='main-text university'>{doctor.university}</p>
                         <div style={{position: 'absolute', bottom: '0%', marginBottom: '20px'}}>
                             <Button

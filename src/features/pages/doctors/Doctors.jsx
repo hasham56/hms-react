@@ -19,7 +19,8 @@ export const Doctors = () => {
     const [experienceRange, setExperienceRange] = useState([2, 5])
 
     // states for filters
-    const [specialities, setSpecialities] = useState([])
+    const [specialties, setSpecialties] = useState([])
+    const [selectedSpecialty, setSelectedSpecialty] = useState([])
 
     // states for slicing
     const [initialSlice, setInitialSlice] = useState(0)
@@ -45,8 +46,23 @@ export const Doctors = () => {
         if (doctors.length) {
             const decimal = ((doctors.length / 6) - Math.floor(doctors.length / 6)) !== 0
             setTotalPages(decimal ? Math.floor(doctors.length / 6) + 1 : doctors.length / 6)
+            let extractSpecialities = []
+            doctors.map(doctor => doctor.specialty.map(specialty => extractSpecialities.push(specialty)))
+            extractSpecialities = extractSpecialities.filter((specialty, i) => extractSpecialities.indexOf(specialty) === i)
+            setSpecialties(extractSpecialities)
         }
     }, [doctors])
+
+    const handleCheckBoxSpecialty = (e, { value, checked }) => {
+        let specialty = selectedSpecialty
+        if (checked) {
+            specialty.push(value)
+            setSelectedSpecialty(specialty)
+        } else {
+            specialty.pop(value)
+            setSelectedSpecialty(specialty)
+        }
+    }
 
     const handleSliderChange = (value) => {
         setExperienceRange(value)
@@ -112,12 +128,15 @@ export const Doctors = () => {
                 <Grid>
                     <Grid.Column computer={5}>
                         <p className='main-text text'>Speciality</p>
-                        {specialities.length ?
+                        {specialties.length ?
                             <div className='filter-area'>
-                                <Checkbox label='ENT' />
-                                <Checkbox label='Gastrologist' />
-                                <Checkbox label='Cardiologist' />
-                                <Checkbox label='Urologist' />
+                                {
+                                    specialties.map(specialty => <Checkbox
+                                        value={specialty}
+                                        onChange={handleCheckBoxSpecialty}
+                                        key={specialty}
+                                        label={specialty} />)
+                                }
                             </div> :
                             <div className='filter-area'>
                                 <Checkbox disabled label='Loading...' />
@@ -161,10 +180,10 @@ export const Doctors = () => {
                             <p className='main-text text'>
                                 {doctors.length ?
                                     (firstEntry === ' active' ?
-                                        `Showing 1-${(pageNumber - 1)*6} of ${doctors.length} Results` :
+                                        `Showing 1-${doctors.length <= 6 ? doctors.length : (pageNumber - 1)*6} of ${doctors.length} Results` :
                                         (lastEntry === ' active') ?
-                                            `Showing ${((pageNumber + 1) * 6) - 6}-${doctors.length} of ${doctors.length} Results` :
-                                            `Showing ${(pageNumber*6)-6}-${pageNumber*6} of ${doctors.length} Results` ) :
+                                            `Showing ${((pageNumber) * 6)}-${doctors.length} of ${doctors.length} Results` :
+                                            `Showing ${((pageNumber - 1)*6)}-${pageNumber*6} of ${doctors.length} Results` ) :
                                 'Loading...'}
                             </p>
                             <Dropdown
