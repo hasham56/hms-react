@@ -180,10 +180,12 @@ export const Doctors = () => {
                             <p className='main-text text'>
                                 {doctors.length ?
                                     (firstEntry === ' active' ?
-                                        `Showing 1-${doctors.length <= 6 ? doctors.length : (pageNumber - 1)*6} of ${doctors.length} Results` :
+                                        `Showing 1-${doctors.length <= 6 ? doctors.length : (pageNumber - 1) * 6} of ${doctors.length} Results` :
                                         (lastEntry === ' active') ?
                                             `Showing ${((pageNumber) * 6)}-${doctors.length} of ${doctors.length} Results` :
-                                            `Showing ${((pageNumber - 1)*6)}-${pageNumber*6} of ${doctors.length} Results` ) :
+                                            `Showing ${((pageNumber - 1) * 6)}-${doctors.length <= 6 ?
+                                                doctors.length :
+                                                pageNumber * 6} of ${doctors.length} Results`) :
                                 'Loading...'}
                             </p>
                             <Dropdown
@@ -211,18 +213,22 @@ export const Doctors = () => {
                                 content={pageNumber === 2 ? pageNumber - 1 : <Icon name='angle left' size='large' />}
                                 onClick={() => handleGoBack(pageNumber - 1)}
                             />
-                            <Button
-                                disabled={!doctors.length && true}
-                                className={'btn' + midEntry}
-                                content={pageNumber}
-                                onClick={() => handlePage(pageNumber)}
-                            />
-                            <Button
-                                disabled={!doctors.length && true}
-                                className={'btn' + lastEntry}
-                                content={pageNumber + 1 === totalPages ? pageNumber + 1 : <Icon name='angle right' size='large' />}
-                                onClick={() => handleGoForward(pageNumber + 1)}
-                            />
+                            {totalPages !== 1 &&
+                                <Button
+                                    disabled={(!doctors.length) && true}
+                                    className={'btn' + midEntry}
+                                    content={pageNumber}
+                                    onClick={() => handlePage(pageNumber)}
+                                />
+                            }
+                            {!(totalPages <= 2) && 
+                                <Button
+                                    disabled={(!doctors.length) && true}
+                                    className={'btn' + lastEntry}
+                                    content={pageNumber + 1 === totalPages ? pageNumber + 1 : <Icon name='angle right' size='large' />}
+                                    onClick={() => handleGoForward(pageNumber + 1)}
+                                />
+                            }
                         </div>
 
                     </Grid.Column>
