@@ -16,6 +16,9 @@ export const Doctors = () => {
 
     const { doctors } = useSelector(state => state.doctors)
 
+    // Creating state of doctors
+    const [doctorList, setDoctorList] = useState([])
+
     const [experienceRange, setExperienceRange] = useState([2, 5])
 
     // states for filters
@@ -43,15 +46,59 @@ export const Doctors = () => {
     }, [dispatch])
 
     useEffect(() => {
-        if (doctors.length) {
-            const decimal = ((doctors.length / 6) - Math.floor(doctors.length / 6)) !== 0
-            setTotalPages(decimal ? Math.floor(doctors.length / 6) + 1 : doctors.length / 6)
-            let extractSpecialities = []
-            doctors.map(doctor => doctor.specialty.map(specialty => extractSpecialities.push(specialty)))
-            extractSpecialities = extractSpecialities.filter((specialty, i) => extractSpecialities.indexOf(specialty) === i)
-            setSpecialties(extractSpecialities)
-        }
+        setDoctorList(doctors)
+
+        let extractSpecialities = []
+        doctors.map(doctor => doctor.specialty.map(specialty => extractSpecialities.push(specialty)))
+        extractSpecialities = extractSpecialities.filter((specialty, i) => extractSpecialities.indexOf(specialty) === i)
+        setSpecialties(extractSpecialities)
+
     }, [doctors])
+
+    useEffect(() => {
+        if (doctorList.length) {
+            const decimal = ((doctorList.length / 6) - Math.floor(doctorList.length / 6)) !== 0
+            setTotalPages(decimal ? Math.floor(doctorList.length / 6) + 1 : doctorList.length / 6)
+        }
+        // eslint-disable-next-line
+    }, [doctorList])
+
+    useEffect(() => {
+        
+        // filters
+        let filteredList = []
+        if (selectedSpecialty.length) {
+            selectedSpecialty.map(specialty => doctors.filter(doctor => doctor.specialty.map(doctorSpecialty => 
+                doctorSpecialty === specialty && filteredList.push(doctor)
+            )))
+            setDoctorList(filteredList)
+
+            // Resetting Page
+            const decimal = ((filteredList.length / 6) - Math.floor(filteredList.length / 6)) !== 0
+            const finalTotal = decimal ? Math.floor(filteredList.length / 6) + 1 : filteredList.length / 6
+            setTotalPages(finalTotal)
+            setPageNumber(2)
+            setFirstEntry(' active')
+            setMidEntry(' ')
+            setLastEntry(' ')
+            setInitialSlice(0)
+            if (filteredList.length <= 6)
+                setFinalSlice(filteredList)
+            else setFinalSlice(6)
+        } else if (doctors.length) {
+            setDoctorList(doctors)
+            if (totalPages >= 2) setPageNumber(2)
+            setFirstEntry(' active')
+            setMidEntry(' ')
+            setLastEntry(' ')
+            setInitialSlice(0)
+            if (doctorList.length <= 6)
+                setFinalSlice(doctorList)
+            else setFinalSlice(6)
+        }
+
+        // eslint-disable-next-line
+    }, [selectedSpecialty])
 
     const handleCheckBoxSpecialty = (e, { value, checked }) => {
         let specialty = [...selectedSpecialty]
@@ -108,9 +155,9 @@ export const Doctors = () => {
             setFirstEntry('')
             setMidEntry('')
             setLastEntry(' active')
-            if (finalSlice !== doctors.length) {
-                setInitialSlice(doctors.length - (doctors.length - finalSlice))
-                setFinalSlice(doctors.length)
+            if (finalSlice !== doctorList.length) {
+                setInitialSlice(doctorList.length - (doctorList.length - finalSlice))
+                setFinalSlice(doctorList.length)
             }
         }
         else {
@@ -150,7 +197,7 @@ export const Doctors = () => {
                             <Checkbox label='Female' />
                         </div>
                         <p className='main-text text'>Years of Experience</p>
-                        {doctors.length ? 
+                        {doctorList.length ? 
                             <div className='filter-area slider-holder'>
                                 <Range
                                     className='slider'
@@ -178,12 +225,12 @@ export const Doctors = () => {
                     <Grid.Column computer={11}>
                         <div className='top-sort'>
                             <p className='main-text text'>
-                                {doctors.length ?
+                                {doctorList.length ?
                                     (firstEntry === ' active' ?
-                                        `Showing 1-${doctors.length <= 6 ? doctors.length : (pageNumber - 1)*6} of ${doctors.length} Results` :
-                                        (lastEntry === ' active') ?
-                                            `Showing ${((pageNumber) * 6)}-${doctors.length} of ${doctors.length} Results` :
-                                            `Showing ${((pageNumber - 1)*6)}-${pageNumber*6} of ${doctors.length} Results` ) :
+                                        `Showing 1-${doctorList.length <= 6 ? doctorList.length : (pageNumber - 1)*6} of ${doctorList.length} Results` :
+                                        ((pageNumber + 1)*6 <= doctors.length) ?
+                                            ((lastEntry === ' active') ? `Showing ${((pageNumber) * 6)}-${doctorList.length} of ${doctorList.length} Results` : `Showing ${((pageNumber-1) * 6)}-${doctorList.length} of ${doctorList.length} Results`) :
+                                            `Showing ${((pageNumber - 1)*6)}-${pageNumber*6} of ${doctorList.length} Results` ) :
                                 'Loading...'}
                             </p>
                             <Dropdown
@@ -200,29 +247,34 @@ export const Doctors = () => {
                             </Dropdown>
                         </div>
 
-                        {doctors.length ?
-                            <DoctorsList doctorsList={doctors.slice(initialSlice, finalSlice)} /> :
+                        {doctorList.length ?
+                            <DoctorsList doctorsList={doctorList.slice(initialSlice, finalSlice)} /> :
                             <DoctorLoaderListEntry />}
 
                         <div className='pagination'>
                             <Button
-                                disabled={!doctors.length && true}
+                                disabled={!doctorList.length && true}
                                 className={'btn' + firstEntry}
                                 content={pageNumber === 2 ? pageNumber - 1 : <Icon name='angle left' size='large' />}
                                 onClick={() => handleGoBack(pageNumber - 1)}
                             />
-                            <Button
-                                disabled={!doctors.length && true}
-                                className={'btn' + midEntry}
-                                content={pageNumber}
-                                onClick={() => handlePage(pageNumber)}
-                            />
-                            <Button
-                                disabled={!doctors.length && true}
-                                className={'btn' + lastEntry}
-                                content={pageNumber + 1 === totalPages ? pageNumber + 1 : <Icon name='angle right' size='large' />}
-                                onClick={() => handleGoForward(pageNumber + 1)}
-                            />
+                            {totalPages !== 1 &&
+                                <Button
+                                    disabled={(!doctorList.length) && true}
+                                    className={'btn' + midEntry}
+                                    content={pageNumber}
+                                    onClick={() => handlePage(pageNumber)}
+                                />
+                            }
+                            {!(totalPages <= 2) && 
+                                <Button
+                                    disabled={(!doctorList.length) && true}
+                                    className={'btn' + lastEntry}
+                                    content={pageNumber + 1 === totalPages ? pageNumber + 1 : <Icon name='angle right' size='large' />}
+                                    onClick={() => handleGoForward(pageNumber + 1)}
+                                />
+                            }
+                            
                         </div>
 
                     </Grid.Column>
