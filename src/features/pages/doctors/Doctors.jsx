@@ -16,6 +16,9 @@ export const Doctors = () => {
 
     const { doctors } = useSelector(state => state.doctors)
 
+    // Dublicate state for creating filter
+    const [doctorsList, setDoctorsList] = useState([])
+
     const [experienceRange, setExperienceRange] = useState([2, 5])
 
     // states for filters
@@ -43,15 +46,20 @@ export const Doctors = () => {
     }, [dispatch])
 
     useEffect(() => {
-        if (doctors.length) {
-            const decimal = ((doctors.length / 6) - Math.floor(doctors.length / 6)) !== 0
-            setTotalPages(decimal ? Math.floor(doctors.length / 6) + 1 : doctors.length / 6)
-            let extractSpecialities = []
-            doctors.map(doctor => doctor.specialty.map(specialty => extractSpecialities.push(specialty)))
-            extractSpecialities = extractSpecialities.filter((specialty, i) => extractSpecialities.indexOf(specialty) === i)
-            setSpecialties(extractSpecialities)
-        }
+        setDoctorsList(doctors)
+
+        let extractSpecialities = []
+        doctors.map(doctor => doctor.specialty.map(specialty => extractSpecialities.push(specialty)))
+        extractSpecialities = extractSpecialities.filter((specialty, i) => extractSpecialities.indexOf(specialty) === i)
+        setSpecialties(extractSpecialities)
     }, [doctors])
+
+    useEffect(() => {
+        if (doctorsList.length) {
+            const decimal = ((doctorsList.length / 6) - Math.floor(doctorsList.length / 6)) !== 0
+            setTotalPages(decimal ? Math.floor(doctorsList.length / 6) + 1 : doctorsList.length / 6)
+        }
+    }, [doctorsList])
 
     const handleCheckBoxSpecialty = (e, { value, checked }) => {
         let specialty = [...selectedSpecialty]
@@ -82,11 +90,7 @@ export const Doctors = () => {
             setFinalSlice(6)
         }
         else {
-            setFirstEntry('')
-            setMidEntry(' active')
-            setLastEntry('')
-            setInitialSlice((page - 1) * 6)
-            setFinalSlice(page * 6)
+            handlePage(page + 1)
         }
     }
 
@@ -108,17 +112,13 @@ export const Doctors = () => {
             setFirstEntry('')
             setMidEntry('')
             setLastEntry(' active')
-            if (finalSlice !== doctors.length) {
-                setInitialSlice(doctors.length - (doctors.length - finalSlice))
-                setFinalSlice(doctors.length)
+            if (finalSlice !== doctorsList.length) {
+                setInitialSlice(doctorsList.length - (doctorsList.length - finalSlice))
+                setFinalSlice(doctorsList.length)
             }
         }
         else {
-            setFirstEntry('')
-            setMidEntry(' active')
-            setLastEntry('')
-            setInitialSlice((page - 1) * 6)
-            setFinalSlice(page * 6)
+            handlePage(page - 1)
         }
     }
 
@@ -150,7 +150,7 @@ export const Doctors = () => {
                             <Checkbox label='Female' />
                         </div>
                         <p className='main-text text'>Years of Experience</p>
-                        {doctors.length ? 
+                        {doctorsList.length ? 
                             <div className='filter-area slider-holder'>
                                 <Range
                                     className='slider'
@@ -178,14 +178,14 @@ export const Doctors = () => {
                     <Grid.Column computer={11}>
                         <div className='top-sort'>
                             <p className='main-text text'>
-                                {doctors.length ?
+                                {doctorsList.length ?
                                     (firstEntry === ' active' ?
-                                        `Showing 1-${doctors.length <= 6 ? doctors.length : (pageNumber - 1) * 6} of ${doctors.length} Results` :
+                                        `Showing 1-${doctorsList.length <= 6 ? doctorsList.length : (pageNumber - 1) * 6} of ${doctorsList.length} Results` :
                                         (lastEntry === ' active') ?
-                                            `Showing ${((pageNumber) * 6)}-${doctors.length} of ${doctors.length} Results` :
-                                            `Showing ${((pageNumber - 1) * 6)}-${doctors.length <= 6 ?
-                                                doctors.length :
-                                                pageNumber * 6} of ${doctors.length} Results`) :
+                                            `Showing ${((pageNumber) * 6)}-${doctorsList.length} of ${doctorsList.length} Results` :
+                                            `Showing ${((pageNumber - 1) * 6)}-${doctorsList.length <= 6 ?
+                                                doctorsList.length :
+                                                pageNumber * 6} of ${doctorsList.length} Results`) :
                                 'Loading...'}
                             </p>
                             <Dropdown
@@ -202,20 +202,20 @@ export const Doctors = () => {
                             </Dropdown>
                         </div>
 
-                        {doctors.length ?
-                            <DoctorsList doctorsList={doctors.slice(initialSlice, finalSlice)} /> :
+                        {doctorsList.length ?
+                            <DoctorsList doctorsList={doctorsList.slice(initialSlice, finalSlice)} /> :
                             <DoctorLoaderListEntry />}
 
                         <div className='pagination'>
                             <Button
-                                disabled={!doctors.length && true}
+                                disabled={!doctorsList.length && true}
                                 className={'btn' + firstEntry}
                                 content={pageNumber === 2 ? pageNumber - 1 : <Icon name='angle left' size='large' />}
                                 onClick={() => handleGoBack(pageNumber - 1)}
                             />
                             {totalPages !== 1 &&
                                 <Button
-                                    disabled={(!doctors.length) && true}
+                                    disabled={(!doctorsList.length) && true}
                                     className={'btn' + midEntry}
                                     content={pageNumber}
                                     onClick={() => handlePage(pageNumber)}
@@ -223,7 +223,7 @@ export const Doctors = () => {
                             }
                             {!(totalPages <= 2) && 
                                 <Button
-                                    disabled={(!doctors.length) && true}
+                                    disabled={(!doctorsList.length) && true}
                                     className={'btn' + lastEntry}
                                     content={pageNumber + 1 === totalPages ? pageNumber + 1 : <Icon name='angle right' size='large' />}
                                     onClick={() => handleGoForward(pageNumber + 1)}
