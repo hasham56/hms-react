@@ -1,0 +1,245 @@
+$white: #fff;
+$grey: #e9e9e9;
+$darkGrey: #7C7E93;
+$main: #2e95a0;
+$light: #00acb1;
+$dark: #005963;
+$purplish: #fcf7ff;
+$fontSmall: 'Rubik', sans-serif;
+$fontLarge: 'Heebo', sans-serif;
+
+// About Us Section
+
+.about-section {
+    width: 100%;
+    background-color: $white;
+    padding: 6% 0 6% 0;
+}
+
+.about-section .work-progress-text {
+    margin-bottom: 0 !important;
+    color: $light;
+}
+
+.about-section .about-text {
+    display: grid !important;
+    place-items: center;
+}
+
+.about-section .about-button {
+    margin: auto !important;
+    width: 100%;
+}
+
+.about-section .appointment-btn {
+    margin: auto !important;
+    width: 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.about-section .about-steps {
+    padding-top: 5% !important;
+}
+
+.about-section .step-images {
+    display: grid;
+    place-items: center;
+    width: 80%;
+    box-shadow: 0 0 20px $grey;
+    padding: 15px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.about-section .step-heading {
+    font-size: 12pt;
+    margin-bottom: 0.5em;
+}
+
+.about-section .step-number {
+    font-size: 15pt;
+    color: $light;
+}
+
+.about-section .about-horizontal-line {
+    width: 100%;
+    height: 2px;
+    background-color: $grey;
+}
+
+.about-section .about-points {
+    transform: translateY(-55%);
+}
+
+.about-section .about-points .step-dot {
+    width: 12px;
+    height: 12px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: $main;
+    box-shadow: 0 0 0 9px #00abb118;
+}
+
+// Why Us Section
+
+.why-us-section {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.why-us-section .why-us-container {
+    position: relative;
+    padding: 8% 0 15% 0;
+}
+
+.why-us-container .why-us-icons {
+    margin: auto;
+}
+
+.why-us-container .heading {
+    font-size: 50px;
+    line-height: 1.3;
+    margin-bottom: 0.25em;
+}
+
+.why-us-container .description {
+    font-size: 10.5pt;
+    font-weight: normal;
+    color: $grey;
+    line-height: 1.8;
+    margin-bottom: 2.2em;
+}
+
+.why-us-container .doctors-image {
+    margin: auto;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.why-us-container .operation-image {
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+}
+
+.why-us-container .icon-heading {
+    margin-bottom: 0.5em;
+}
+
+.why-us-container .icon-description {
+    font-size: 10.5pt;
+    font-weight: normal;
+    color: $grey;
+}
+
+.why-us-section .counter-section {
+    position: absolute;
+    width: 100%;
+    height: 185px;
+    margin: auto;
+    background-color: $light;
+    overflow: hidden;
+    bottom: 0%;
+    transform: translateY(50%);
+}
+
+.why-us-section .counter-section .left-bg-image {
+    width: 56%;
+    position: absolute;
+    top: 0%;
+    transform: translate(-8%, -12%);
+}
+
+.why-us-section .counter-section .right-bg-image {
+    width: 56%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    transform: translate(2%, -6%);
+}
+
+.why-us-section .counter-grid {
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+}
+
+.counter-blocks .counter-value {
+    font-size: 30pt;
+}
+
+.counter-blocks .counter-text {
+    font-size: 11pt;
+}
+
+// Team Section
+
+.team-section {
+    background-color: $white;
+}
+
+.team {
+    padding: 12% 0 20% 0;
+}
+
+.team .main-heading {
+    margin-bottom: 0.75em;
+}
+
+.team .teammember .image {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team .teammember .detail {
+    position: absolute;
+    top: 92.5%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    background-color: $white;
+    border-radius: 5px;
+    width: 70%;
+    padding: 5% 0 3% 0;
+    box-shadow: 0 0 20px $grey;
+}
+
+.team .teammember .detail .name {
+    margin-bottom: 0.25em;
+}
+
+.team .teammember .detail .designation {
+    color: $main;
+    font-size: 12pt;
+    margin-bottom: 0.65em;
+}
+
+.team .teammember .detail .icons {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.team .teammember .detail .icon-holder {
+    padding-left: 0.65em;
+}
+
+.team .teammember .detail .social-icons {
+    color: $dark !important;
+    background-color: $purplish !important;
+    font-size: 12pt;
+}
+
+.team .teammember .detail .social-icons:hover {
+    color: $white !important;
+    background-color: $dark !important;
+    cursor: pointer;
+    transition: background 1s ease;
+}

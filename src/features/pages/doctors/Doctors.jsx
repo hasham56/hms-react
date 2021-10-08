@@ -24,6 +24,7 @@ export const Doctors = () => {
     // states for filters
     const [specialties, setSpecialties] = useState([])
     const [selectedSpecialty, setSelectedSpecialty] = useState([])
+    const [doctorFound, setDoctorFound] = useState(true)
 
     // states for slicing
     const [initialSlice, setInitialSlice] = useState(0)
@@ -61,13 +62,41 @@ export const Doctors = () => {
         }
     }, [doctorsList])
 
+    useEffect(() => {
+        if (selectedSpecialty.length === 0) {
+            setDoctorFound(true)
+            setDoctorsList(doctors)
+        }
+        else if (selectedSpecialty.length <= 2 ) {
+            let filteredList = []
+            if (selectedSpecialty.length === 1) {
+                doctors.filter(doctor =>
+                    doctor.specialty.map(doctorSpecialty =>
+                        selectedSpecialty[0] === doctorSpecialty && filteredList.push(doctor)))
+            } else if (selectedSpecialty.length === 2) {
+                doctors.filter(doctor =>
+                    ((selectedSpecialty[0] === doctor.specialty[0] && selectedSpecialty[1] === doctor.specialty[1]) ||
+                        (selectedSpecialty[0] === doctor.specialty[1] && selectedSpecialty[1] === doctor.specialty[0]))
+                    && filteredList.push(doctor))
+            }
+            if (filteredList) setDoctorsList(filteredList)
+            else setDoctorFound(false)
+        } else {
+                setDoctorFound(true)
+                setDoctorsList(doctors)
+        }
+        // eslint-disable-next-line
+    }, [selectedSpecialty])
+
     const handleCheckBoxSpecialty = (e, { value, checked }) => {
         let specialty = [...selectedSpecialty]
         if (checked) {
             specialty.push(value)
             setSelectedSpecialty(specialty)
         } else {
-            specialty.pop(value)
+            let index
+            specialty.filter((specialty, i) => (specialty === value) ? index = i : '')
+            specialty.splice(index, 1)
             setSelectedSpecialty(specialty)
         }
     }
@@ -203,7 +232,7 @@ export const Doctors = () => {
                         </div>
 
                         {doctorsList.length ?
-                            <DoctorsList doctorsList={doctorsList.slice(initialSlice, finalSlice)} /> :
+                            <DoctorsList doctorsList={doctorsList.slice(initialSlice, finalSlice)} doctorFound={doctorFound} /> :
                             <DoctorLoaderListEntry />}
 
                         <div className='pagination'>
