@@ -1,0 +1,149 @@
+$white: #fff;
+$grey: #e9e9e9;
+$darkGrey: #7C7E93;
+$main: #2e95a0;
+$light: #00acb1;
+$dark: #005963;
+$purplish: #fcf7ff;
+$fontSmall: 'Rubik', sans-serif;
+$fontLarge: 'Heebo', sans-serif;
+
+.services {
+    background-color: $white;
+}
+
+// Services Section
+
+.services-section {
+    position: relative;
+    padding: 7% 0 7% 0;
+}
+
+.services-section .services-content {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 8px;
+    padding: 6% 0 8% 0;
+}
+
+.services-section .service {
+    background-color: $white;
+    border-radius: 5px;
+    padding: 10% 0 7% 0;
+    box-shadow: 0 0 10px $grey;
+}
+
+.services-section .service:hover {
+    box-shadow: 0 0 20px $grey;
+    transition: box-shadow 0.5s ease;
+}
+
+.services-section .service .icon {
+    display: unset !important;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.services-section .service .detail {
+    padding-left: 5% !important;
+    padding-right: 10% !important;
+}
+
+.services-section .service .heading {
+    margin-bottom: 0.70em;
+}
+
+// Image Gallery
+
+.image-gallery {
+    padding: 0 2% 0 2% !important;
+}
+
+.image-gallery .image-holder {
+    padding: 0.5em !important;
+}
+
+.image-gallery .image {
+    margin: 0 auto;
+    width: 100%;
+}
+
+// Clients Reviews
+
+.reviews {
+    padding: 6% 0 15% 0;
+}
+
+.reviews .mini-heading {
+    color: $light;
+    margin-bottom: 0;
+}
+
+.reviews .main-heading {
+    margin-bottom: 0.75em;
+    color: $dark;
+}
+
+.reviews .review {
+    background-color: $white;
+    padding: 10% 5% 10% 0%;
+    box-shadow: 0 0 10px $grey;
+}
+
+.reviews .review:hover {
+    box-shadow: 0 0 20px $grey;
+    transition: box-shadow 0.5s ease;
+}
+
+.reviews .review .content {
+    display: flex;
+}
+
+.reviews .review .detail {
+    width: 50%;
+    padding: 2% 0% 0% 6%;
+}
+
+.reviews .review .vertical-line {
+    width: 1%;
+    background-color: $light;
+    border-radius: 25px;
+}
+
+.reviews .review .image-holder {
+    padding-left: 5.5%;
+    position: relative;
+}
+
+.reviews .review .client-picture {
+    margin-bottom: 0 !important;
+}
+
+.reviews .review .client-name {
+    font-size: 12pt;
+    margin-bottom: 0.5em;
+    color: #000;
+}
+
+.reviews .review .client-designation {
+    font-size: 12pt;
+    color: $darkGrey;
+}
+
+.reviews .review .description {
+    padding: 5% 0% 0% 9%;
+}
+
+.reviews .review .content .quotes {
+    color: $white !important;
+    background-color: $light !important;
+    font-size: 12pt;
+    position: absolute;
+    top: 70%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}

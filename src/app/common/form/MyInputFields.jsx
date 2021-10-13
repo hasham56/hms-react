@@ -16,7 +16,7 @@ export const MyInputField = ({label=false, labelValue='', ...props}) => {
             />
             {meta.touched && meta.error ? (
                 <label className='error-label' basic color='red'>{meta.error}</label>
-            ) : null}
+            ) : <div className='empty-label'></div>}
         </FormField>
     )
 }

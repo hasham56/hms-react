@@ -148,7 +148,7 @@ export const EditProfile = () => {
                                         labelValue='Phone Number' />
                                     <MyTextArea
                                         name='address'
-                                        placeholder='Enter your password'
+                                        placeholder='Enter your address'
                                         type='text'
                                         label={true}
                                         labelValue='Address'/>

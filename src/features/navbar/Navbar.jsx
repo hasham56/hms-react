@@ -92,7 +92,7 @@ export const Navbar = () => {
                     <Menu.Item as={NavLink} to='/news' className='nav-item' content='News' />
                     <Menu.Item as={NavLink} to='/contact' className='nav-item' content='Contact' />
                     <Menu.Item className='nav-item'>
-                        <Button className='btn-secondary nav-button'>
+                        <Button className='btn-secondary nav-button' onClick={() => history.push('./doctors')}>
                             <p>Find A Doctor&nbsp;&emsp;
                             <Icon name='plus' /></p>
                         </Button>

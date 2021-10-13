@@ -19,7 +19,8 @@ export const About = () => {
                             <Grid.Column computer={9} style={{ display: 'flex' }}>
                                 <Grid>
                                     <Grid.Column computer={10} className='about-text'>
-                                        <p className='main-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime cumque ullam nobis architecto, ipsa repudiandae perferendis eaque.</p>
+                                        <p className='main-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime cumque ullam nobis
+                                            architecto, ipsa repudiandae perferendis eaque.</p>
                                     </Grid.Column>
                                     <Grid.Column computer={6} className='about-button'>
                                         <Button className='btn-secondary appointment-btn' content='Make Appointment' />
@@ -129,14 +130,16 @@ export const About = () => {
                     <Grid className='why-us-content' columns={2}>
                         <Grid.Column>
                             <p className='basic-text heading'>Why Choose<br />Docfind Clinic?</p>
-                            <p className='basic-text description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero recusandae sed corporis odio ullam non soluta enim dolorem? Libero ipsum id beatae perferendis quaerat est consequatur harum.</p>
+                            <p className='basic-text description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero recusandae sed
+                                corporis odio ullam non soluta enim dolorem? Libero ipsum id beatae perferendis quaerat est consequatur harum.</p>
                             <Grid>
                                 <Grid.Column computer={4}>
                                     <Image className='why-us-icons' src={'/assets/about/stethoscope.svg'} />
                                 </Grid.Column>
                                 <Grid.Column computer={12}>
                                     <p className='basic-text icon-heading'>Quality Control System</p>
-                                    <p className='basic-text icon-description'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe accusantium repudiandae minus.</p>
+                                    <p className='basic-text icon-description'>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                        Saepe accusantium repudiandae minus.</p>
                                 </Grid.Column>
                             </Grid>
                             <Grid>
@@ -145,7 +148,8 @@ export const About = () => {
                                 </Grid.Column>
                                 <Grid.Column computer={12}>
                                     <p className='basic-text icon-heading'>Highly Professional Staff</p>
-                                    <p className='basic-text icon-description'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe accusantium repudiandae minus.</p>
+                                    <p className='basic-text icon-description'>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                        Saepe accusantium repudiandae minus.</p>
                                 </Grid.Column>
                             </Grid>
                         </Grid.Column>

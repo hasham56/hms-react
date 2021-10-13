@@ -89,18 +89,6 @@ $fontLarge: 'Heebo', sans-serif;
     color: $main;
 }
 
-.login-form .error-label {
-    margin-bottom: 1px !important;
-}
-
-.login-form .field {
-    margin-bottom: 20px !important;
-}
-
-.login-form .error.field {
-    margin-bottom: 0 !important;
-}
-
 .login-form .platform-option .platform-btn i {
     float: left;
 }
@@ -212,18 +200,6 @@ $fontLarge: 'Heebo', sans-serif;
 
 .signup-form .login .login-link:hover {
     color: $main;
-}
-
-.signup-form .error-label {
-    margin-bottom: 1px !important;
-}
-
-.signup-form .field {
-    margin-bottom: 20px !important;
-}
-
-.signup-form .error.field {
-    margin-bottom: 0 !important;
 }
 
 .signup-form .go-back {

@@ -1,5 +1,5 @@
 import firebase from '../config/firebase'
-// import cuid from 'cuid'
+import cuid from 'cuid'
 
 const db = firebase.firestore()
 
@@ -56,6 +56,36 @@ export const dataFromSnapshot = (snapshot) => {
         id: snapshot.id
     }
 }
+
+export async function addUserMessage(data) {
+
+    try {
+        return await db.collection('contact').doc(cuid()).set({
+            name: data.fullName,
+            email: data.email,
+            message: data.message
+        })
+    } catch (error) {
+        throw error
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // export const setDoctorData = () => {
 //     try {
