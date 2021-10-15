@@ -16,6 +16,7 @@ import { WrongURL } from '../wrongURL/WrongURL'
 import { VerifyUser } from '../profile/VerifyUser'
 import { ResetPassword } from '../profile/ResetPassword'
 import { ForgotPassword } from '../profile/ForgotPassword'
+import { FAQ } from '../pages/faq/FAQ'
 
 export const Page = ({data}) => {
 
@@ -51,6 +52,7 @@ export const Page = ({data}) => {
             {data.pageName === 'Profile' && <Profile />}
             {data.pageName === 'Verify' && <VerifyUser />}
             {data.pageName === 'Reset' && <ResetPassword />}
+            {data.pageName === 'FAQ' && <FAQ />}
             {data.pageName === 'Forgot Password' && <ForgotPassword />}
         </>
     )

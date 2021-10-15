@@ -39,6 +39,11 @@ export const getAllDoctors = (observer) => {
     return db.collection('doctors').onSnapshot(observer)
 }
 
+export const getAllFAQs = (observer) => {
+
+    return db.collection('faqs').orderBy('index').onSnapshot(observer)
+}
+
 export const dataFromSnapshot = (snapshot) => {
     
     if (!snapshot.exists) return undefined

@@ -88,3 +88,10 @@ export const forgotPassword = {
     pageLinkName: '',
     pageLink: ''
 }
+
+export const faq = {
+    pageName: 'FAQ',
+    pageTitle: 'FAQ',
+    pageLinkName: 'Faq',
+    pageLink: 'faq'
+}
