@@ -147,7 +147,7 @@ $fontLarge: 'Heebo', sans-serif;
     width: 100%;
 }
 
-// Doctors
+// Doctors List
 
 .doctor {
     margin-top: 6% !important;
@@ -237,4 +237,240 @@ $fontLarge: 'Heebo', sans-serif;
     position: absolute;
     bottom: 0%;
     margin-bottom: 25px;
+}
+
+// Doctors Detail
+
+.doctor-detail {
+    background-color: $white;
+    padding: 5em 0;
+}
+
+.doctor-detail .doctor {
+    height: 202px;
+    border: 2px solid $grey;
+    margin-top: -1em !important;
+}
+
+.doctor .image-holder {
+    padding: 0 !important;
+}
+
+.doctor .image-holder .image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.doctor-detail .stars {
+    display: flex;
+}
+
+.doctor-detail .star {
+    color: $dark;
+}
+
+.doctor .speciality {
+    margin-bottom: 0;
+}
+
+.doctor .perk {
+    color: $dark;
+    margin-bottom: 0.15em;
+}
+
+.doctor .perk i {
+    color: $light;
+    padding-right: 1.5em;
+}
+
+.doctor-detail .tabs {
+    box-shadow: 0 0 15px $grey;
+    margin-top: 3em !important;
+    margin-bottom: 2em;
+}
+
+.doctor-detail .tabs .tab {
+    border-right: 2px solid $grey;
+    cursor: pointer;
+}
+
+.doctor-detail .tabs .tab:last-child {
+    border-right: 0;
+}
+
+.doctor-detail .tab.active .tab-name {
+    color: $dark;
+}
+
+.doctor-detail .tab-name {
+    font-size: 11pt;
+    font-family: $fontSmall;
+    color: rgb(149, 185, 190);
+    margin-bottom: 0;
+}
+
+.doctor-detail .tab-name:hover {
+    color: $main;
+}
+
+.doctor-detail .overview {
+    margin-bottom: 4em;
+    margin-left: -1em;
+    margin-right: -1em;
+}
+
+.doctor-detail .primary-text {
+    font-size: 18pt !important;
+    margin-bottom: 0.25em;
+}
+
+.doctor-detail .details {
+    margin-bottom: 2em;
+}
+
+.doctor-detail .specialties-name .speciality {
+    padding-bottom: 0 !important;
+}
+
+.doctor-detail .specialties-name .main-text {
+    color: $dark;
+}
+
+.doctor-detail .specialties-name .main-text i {
+    color: rgb(149, 185, 190);
+    padding-right: 1.5em;
+}
+
+.doctor-detail .location {
+    margin-left: -1em;
+    margin-right: -1em;
+}
+
+.doctor-detail .maps {
+    margin-top: 1em;
+    border: 2px solid $grey;
+}
+
+.doctor-detail .address-heading {
+    font-size: 14pt !important;
+}
+
+.doctor-detail .address-holder {
+    padding: 1.5em;
+}
+
+.doctor-detail .address-holder .address i{
+    margin: 0.25em;
+    padding-right: 1.5em;
+}
+
+.doctor-detail .address-heading {
+    margin-bottom: 1em;
+}
+
+.doctor-detail .patient-reviews {
+    margin-top: 2.5em;
+}
+
+.doctor-detail .patient-reviews .review {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.doctor-detail .patient-reviews .review .row {
+    border: 2px solid $grey;
+    border-radius: 5px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.patient-reviews .review .image {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.patient-reviews .review .patient-name {
+    font-size: 12pt !important;
+}
+
+.patient-reviews .review .date {
+    color: rgb(149, 185, 190);
+}
+
+.patient-reviews .seemore-btn {
+    margin-left: -1em !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    background-color: $white !important;
+}
+
+.patient-reviews .seemore-btn:hover {
+    background-color: $main !important;
+}
+
+.doctor-detail .booking {
+    box-shadow: 0 0 20px $grey;
+    border-radius: 5px;
+    margin: 1em;
+    margin-top: -1em;
+    padding-bottom: 20px;
+}
+
+.doctor-detail .booking .heading-holder {
+    background-color: rgb(234, 242, 243);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.doctor-detail .booking .heading {
+    margin: 0 auto;
+    width: 85%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15pt !important;
+}
+
+.doctor-detail .booking .label {
+    display: block;
+    background-color: transparent;
+    padding-left: 0;
+    font-size: 11pt;
+    font-family: $fontSmall;
+    color: $darkGrey;
+    width: 85% !important;
+    margin: 0 auto;
+}
+
+.doctor-detail .booking .input {
+    width: 85% !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.doctor-detail .booking input {
+    margin: 0 auto;
+    width: 100%;
+    color: $dark !important;
+}
+
+.doctor-detail .booking hr {
+    border-style: solid;
+    border-color: $grey;
+    border-width: 1px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.doctor-detail .booking button {
+    width: 85%;
+    padding: 8px 0 8px 0 !important;
+    display: block;
+    margin: 0 auto !important;
+}
+
+.doctor-detail .booking button:hover {
+   background-color: $white !important;
 }

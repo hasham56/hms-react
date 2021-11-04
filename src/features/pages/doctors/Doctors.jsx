@@ -38,12 +38,11 @@ export const Doctors = () => {
     const [lastEntry, setLastEntry] = useState('')
 
     useEffect(() => {
-        const data = getAllDoctors({
+        getAllDoctors({
             next: snapshot => dispatch(fetchAllDoctors(snapshot.docs.map(docSnapshot => dataFromSnapshot(docSnapshot)))),
             error: err => console.log(err)
-        })
-
-        return data
+        } )
+        
     }, [dispatch])
 
     useEffect(() => {

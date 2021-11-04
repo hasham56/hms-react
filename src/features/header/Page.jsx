@@ -17,6 +17,7 @@ import { VerifyUser } from '../profile/VerifyUser'
 import { ResetPassword } from '../profile/ResetPassword'
 import { ForgotPassword } from '../profile/ForgotPassword'
 import { FAQ } from '../pages/faq/FAQ'
+import { DoctorDetail } from '../pages/doctors/doctorsDetail/DoctorDetail'
 
 export const Page = ({data}) => {
 
@@ -28,9 +29,9 @@ export const Page = ({data}) => {
         else if (data.pageName === 'Profile')
             setHeader(<ProfileHeader />)
         else {
-            setHeader(<RestHeader 
-                pageTitle={data.pageTitle} 
-                pageLink={data.pageLink} 
+            setHeader(<RestHeader
+                pageTitle={data.pageTitle}
+                pageLink={data.pageLink}
                 pageLinkName={data.pageLinkName} />)
         }
         // eslint-disable-next-line
@@ -54,6 +55,7 @@ export const Page = ({data}) => {
             {data.pageName === 'Reset' && <ResetPassword />}
             {data.pageName === 'FAQ' && <FAQ />}
             {data.pageName === 'Forgot Password' && <ForgotPassword />}
+            {data.pageName === 'Doctor Details' && <DoctorDetail />}
         </>
     )
 }

@@ -34,7 +34,14 @@ export async function updateUserProfile(profile) {
 
     try {
         await user.updateEmail(profile.email)
-        return await db.collection('users').doc(user.uid).update(profile)
+        return await db.collection('users').doc(user.uid).update({
+        displayName: profile.displayName,
+        email: profile.email,
+        photoURL: profile.photoURL || '',
+        phone: profile.phone || '',
+        address: profile.address || '',
+        lastUpdatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    })
     } catch (error) {
         throw error
     }

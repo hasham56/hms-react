@@ -153,8 +153,15 @@ export const Contact = () => {
                 </Container>
             </div>
             <div className="map">
-                <Image src='/assets/contact/map.png' />
-                <Image className='pointer' src='/assets/contact/mapsPointer.svg' />
+                <iframe
+                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13606.813007965276!2d74.3235535!3d31.50483955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbbf38938d0d6b6f0!2sBlank%20Slate!5e0!3m2!1sen!2s!4v1635405458232!5m2!1sen!2s'
+                    title='map'
+                    style={{border: 0}}
+                    width='100%'
+                    height='450'
+                    allowFullScreen={false}
+                    loading='lazy'
+                />
             </div>
         </div>
     )

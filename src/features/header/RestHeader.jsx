@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Image } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 
-export const RestHeader = ({pageTitle, pageLink, pageLinkName}) => {
+export const RestHeader = ({ pageTitle, pageLink, pageLinkName }) => {
+    
+    const { id } = useParams()
 
     return (
         <div className='header'>
@@ -19,7 +21,7 @@ export const RestHeader = ({pageTitle, pageLink, pageLinkName}) => {
                 <p className='header-secondary-text'>
                     <Link className='link' to='/'>
                         Home
-                    </Link> | <Link className='link active' to={`/${pageLink}`}>
+                    </Link> | <Link className='link active' to={`/${pageLink}${id !== undefined ? `/` + id : ''}`}>
                         {pageLinkName}
                     </Link>
                 </p>}

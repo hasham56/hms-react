@@ -95,3 +95,10 @@ export const faq = {
     pageLinkName: 'Faq',
     pageLink: 'faq'
 }
+
+export const doctorDetailPageData = {
+    pageName: 'Doctor Details',
+    pageTitle: 'Doctor Details',
+    pageLinkName: 'Doctor Details',
+    pageLink: 'doctors'
+}

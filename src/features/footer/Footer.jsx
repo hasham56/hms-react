@@ -85,13 +85,13 @@ export const Footer = () => {
             <div className='footer-horizontal-line' ></div>
             <Grid.Row>
                 <Grid.Column className='terms-responsive' textAlign='left' computer={8} tablet={8} mobile={16}>
-                    <p className='footer-text'>&copy; Yoursitename 2021 | All Rights Reserved</p>
+                    <p className='footer-text'>&copy; Docfind 2021 | All Rights Reserved</p>
                 </Grid.Column>
                 <Grid.Column className='terms-responsive' textAlign='right' computer={8} tablet={8} mobile={16}>
                     <p className='footer-text'>
                         <Link className='link' to='/'>Privacy</Link> &nbsp; |
                         &nbsp; <Link className='link' to='/'>Terms</Link> &nbsp; |
-                        &nbsp; <Link className='link' to='/'>Sitemap</Link> &nbsp; |
+                        &nbsp; <Link className='link' to='/faq'>FAQs</Link> &nbsp; |
                         &nbsp; <Link className='link' to='/'>Help</Link></p>
                 </Grid.Column>
             </Grid.Row>

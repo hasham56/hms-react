@@ -65,17 +65,3 @@ $fontLarge: 'Heebo', sans-serif;
     width: 20% !important;
     margin: 0 auto !important;
 }
-
-// Map portion
-
-.map {
-    position: relative;
-}
-
-.map .pointer {
-    position: absolute;
-    top: 50%;
-    left: 51%;
-    transform: translate(-50%, -50%);
-    width: 3%;
-}

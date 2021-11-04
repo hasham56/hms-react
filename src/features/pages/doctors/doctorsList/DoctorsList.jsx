@@ -1,10 +1,13 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 
 export const DoctorsList = ({doctorsList}) => {
 
-    const handleViewMore = () => {
+    const history = useHistory()
 
+    const handleViewMore = (doctor) => {
+        history.push(`/doctors/${doctor.id}`)
     }
 
     const handleAddToFavourites = () => {
@@ -32,7 +35,7 @@ export const DoctorsList = ({doctorsList}) => {
                             <Button
                                 className='btn-primary viewmore-btn'
                                 content='View More'
-                                onClick={() => handleViewMore()}
+                                onClick={() => handleViewMore(doctor)}
                             />
                             <Button
                                 className='btn-primary favourite-btn'

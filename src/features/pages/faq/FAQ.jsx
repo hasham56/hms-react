@@ -23,12 +23,10 @@ export const FAQ = () => {
     }
 
     useEffect(() => {
-        const data = getAllFAQs({
+        getAllFAQs({
             next: snapshot => setFaqs(snapshot.docs.map(docSnapshot => dataFromSnapshot(docSnapshot))),
             error: err => console.log(err)
         })
-
-        return data
     }, [])
 
     useEffect(() => {

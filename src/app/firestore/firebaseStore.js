@@ -44,6 +44,14 @@ export const getAllFAQs = (observer) => {
     return db.collection('faqs').orderBy('index').onSnapshot(observer)
 }
 
+export const getHospitalData = (hospitalId, observer) => {
+    return db.collection( 'hospitals' ).doc( hospitalId ).onSnapshot(observer)
+}
+
+export const getReviews = (doctorId, observer) => {
+    return db.collection('reviews').doc(doctorId).onSnapshot(observer)
+}
+
 export const dataFromSnapshot = (snapshot) => {
     
     if (!snapshot.exists) return undefined
@@ -62,7 +70,7 @@ export const dataFromSnapshot = (snapshot) => {
     }
 }
 
-export async function addUserMessage(data) {
+export const addUserMessage = async (data) => {
 
     try {
         return await db.collection('contact').doc(cuid()).set({
@@ -74,7 +82,6 @@ export async function addUserMessage(data) {
         throw error
     }
 }
-
 
 
 
