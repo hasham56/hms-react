@@ -23,7 +23,6 @@ export async function registerInFirebase(creds) {
         })
         return await setUserProfileData(result.user)
     } catch (error) {
-        console.log(error)
         throw error
     }
 }
@@ -35,12 +34,12 @@ export async function updateUserProfile(profile) {
     try {
         await user.updateEmail(profile.email)
         return await db.collection('users').doc(user.uid).update({
-        displayName: profile.displayName,
-        email: profile.email,
-        photoURL: profile.photoURL || '',
-        phone: profile.phone || '',
-        address: profile.address || '',
-        lastUpdatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            displayName: profile.displayName,
+            email: profile.email,
+            photoURL: profile.photoURL || '',
+            phone: profile.phone || '',
+            address: profile.address || '',
+            lastUpdatedAt: firebase.firestore.FieldValue.serverTimestamp()
     })
     } catch (error) {
         throw error

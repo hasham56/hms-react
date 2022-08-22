@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, forwardRef } from 'react'
 import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { WrongURL } from '../../../wrongURL/WrongURL'
 import { Container, Grid, Icon, Image, Button, Label, Input } from 'semantic-ui-react'
 import { dataFromSnapshot, getHospitalData, getReviews } from '../../../../app/firestore/firebaseStore'
+import moment from 'moment'
 import ContentLoader from 'react-content-loader'
+import DatePicker from 'react-datepicker'
 
 export const DoctorDetail = () => {
 
@@ -14,10 +16,20 @@ export const DoctorDetail = () => {
     const [doctor, setDoctor] = useState({})
     const [hospital, setHospital] = useState({})
     const [reviews, setReviews] = useState({})
-    const [activeTab, setActiveTab] = useState(1)
+    const [activeTab, setActiveTab] = useState( 1 )
+    
+    const [showMore, setShowMore] = useState( false )
+    const [showReviews, setShowReviews] = useState( {} )
+    
+    const CustomDateInput = forwardRef(({ value, onClick }, ref) => (
+        <Input className="example-custom-input" onClick={onClick} ref={ref}>
+            {value}
+        </Input>
+    ))
+    const [startDate, setStartDate] = useState(new Date())
 
     useEffect( () => {
-        doctors.map(doctor => doctor.id === id ? setDoctor(doctor) : '')
+        doctors.map( doctor => doctor.id === id ? setDoctor( doctor ) : '' )
         // eslint-disable-next-line
     }, [] )
 
@@ -34,15 +46,30 @@ export const DoctorDetail = () => {
         getReviews(id, {
             next: snapshot => setReviews(dataFromSnapshot(snapshot)),
             error: err => console.log(err)
-        })
+        } )
     }, [id] )
 
     useEffect( () => {
-        console.log(reviews)
-    }, [reviews])
+        if ( reviews !== undefined ) {
+            if ( Object.keys( reviews ).length > 0 ) {
+                if ( !showMore ) {
+                    const newReviews = {reviews: [], id: reviews.id}
+                    reviews.reviews.map( ( review, i ) => i <= 2 && newReviews.reviews.push(review))
+                    setShowReviews( {...newReviews} )
+                }
+                else
+                    setShowReviews( {...reviews} )
+            }
+        }
+    }, [reviews, showMore] )
 
     const handleTab = (tab) => {
         setActiveTab(tab)
+    }
+
+    const handleShowMore = () => {
+        if ( showMore ) setShowMore( false )
+        else setShowMore( true )
     }
 
     if (doctors.length === 0) return <WrongURL />
@@ -194,11 +221,12 @@ export const DoctorDetail = () => {
                                 }
                                 </div>}
                             { activeTab === 3 &&
-                                ( Object.keys( reviews ).length > 0 ?
+                                ( doctor.reviews.totalReviews ?
+                                    ( Object.keys( showReviews ).length > 0 ?
                                     <div className="patient-reviews">
                                         <p className='primary-text'>Patient Experience</p>
-                                        { reviews.reviews.map( review => 
-                                            <Grid className='review'>
+                                        { showReviews.reviews.map( (review, i) => 
+                                            <Grid className='review' key={review.clientId + i}>
                                                 <Grid.Row>
                                                     <Grid.Column computer={3} textAlign='center'>
                                                         <Image className='image' src={review.clientPhoto} />
@@ -219,7 +247,9 @@ export const DoctorDetail = () => {
                                                                 </div>
                                                             </Grid.Column>
                                                             <Grid.Column computer={4} textAlign='right'>
-                                                                <p className='main-text date'>{review.CreatedAt}</p>
+                                                                <p className='main-text date'>
+                                                                    {moment(review.createdAt.toDate()).format('DD MMM, YY')}
+                                                                </p>
                                                             </Grid.Column>
                                                         </Grid>
                                                         <p className='main-text'>{review.review}</p>
@@ -227,13 +257,18 @@ export const DoctorDetail = () => {
                                                 </Grid.Row>
                                             </Grid>
                                         ) }
-                                        <Button className='btn-primary seemore-btn'>
-                                            <p>See More&emsp;
-                                                <Icon name='long arrow alternate right' size='large' /></p>
+                                        <Button className='btn-primary seemore-btn' onClick={() => handleShowMore()}>
+                                            <p>{showMore ? 'See Less' : 'See More'}&emsp;
+                                                <Icon name='long arrow alternate right' size='large' />
+                                            </p>
                                         </Button>
                                     </div>
                                 : <p className='primary-text'>Loading...</p>
-                            )
+                                ) :
+                                <div className="no-reviews">
+                                    <p className="primary-text">No Reviews Yet!</p>
+                                </div>
+                                )
                             }
                         </Grid.Column>
                         <Grid.Column computer={5}>
@@ -242,7 +277,12 @@ export const DoctorDetail = () => {
                                     <p className='primary-text heading'>Booking Summary</p>
                                 </div>
                                 <Label content='Date' />
-                                <Input type='date' />
+                                {/* <Input type='date' /> */}
+                                <DatePicker
+                                    selected={startDate}
+                                    onChange={(date) => setStartDate(date)}
+                                    customInput={<CustomDateInput />}
+                                />
                                 <Label content='Time' />
                                 <Input type='time' />
                                 <hr />

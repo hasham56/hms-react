@@ -56,7 +56,7 @@ export const Footer = () => {
                     <p className='footer-text-heading'>Services</p>
                     <p className='footer-text'>
                         <Link className='link' to='/'>Conditions</Link><br />
-                        <Link className='link' to='/'>Terms ofUse</Link><br />
+                        <Link className='link' to='/'>Terms of Use</Link><br />
                         <Link className='link' to='/'>Our Services</Link><br />
                         <Link className='link' to='/'>New Guests List</Link><br />
                         <Link className='link' to='/'>The Team List</Link><br />
@@ -66,7 +66,7 @@ export const Footer = () => {
                     <p className='footer-text-heading'>Useful Links</p>
                     <p className='footer-text'>
                         <Link className='link' to='/'>Conditions</Link><br />
-                        <Link className='link' to='/'>Terms ofUse</Link><br />
+                        <Link className='link' to='/'>Terms of Use</Link><br />
                         <Link className='link' to='/'>Our Services</Link><br />
                         <Link className='link' to='/'>New Guests List</Link><br />
                         <Link className='link' to='/'>The Team List</Link><br />
