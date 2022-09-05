@@ -6,21 +6,37 @@ import {
   Container,
   Grid,
   Dropdown,
-  Checkbox,
   Button,
   Icon,
 } from 'semantic-ui-react'
 import {
   dataFromSnapshot,
   getAllDoctors,
+  setDoctorData,
 } from '../../../app/firestore/firebaseStore'
 import { useDispatch } from 'react-redux'
 import { fetchAllDoctors } from './doctorsReducer'
 import { useSelector } from 'react-redux'
 import { DoctorLoaderListEntry } from './doctorsList/DoctorLoaderList'
 import { DoctorsList } from './doctorsList/DoctorsList'
+import { toast, Slide } from 'react-toastify'
 
 export const Doctors = () => {
+  const showSuccess = (message) => {
+    toast.success(message, {
+      position: 'bottom-center',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      transition: Slide,
+      theme: 'colored',
+      pauseOnFocusLoss: false,
+    })
+  }
+
   const dispatch = useDispatch()
 
   const { doctors } = useSelector((state) => state.doctors)
@@ -28,11 +44,8 @@ export const Doctors = () => {
   // Dublicate state for creating filter
   const [doctorsList, setDoctorsList] = useState([])
 
-  const [experienceRange, setExperienceRange] = useState([2, 5])
-
   // states for filters
   const [specialties, setSpecialties] = useState([])
-  const [selectedSpecialty, setSelectedSpecialty] = useState([])
   const [doctorFound, setDoctorFound] = useState(true)
 
   // states for slicing
@@ -83,58 +96,6 @@ export const Doctors = () => {
     }
   }, [doctorsList])
 
-  useEffect(() => {
-    if (selectedSpecialty.length === 0) {
-      setDoctorFound(true)
-      setDoctorsList(doctors)
-    } else if (selectedSpecialty.length <= 2) {
-      let filteredList = []
-      if (selectedSpecialty.length === 1) {
-        doctors.filter((doctor) =>
-          doctor.specialty.map(
-            (doctorSpecialty) =>
-              selectedSpecialty[0] === doctorSpecialty &&
-              filteredList.push(doctor),
-          ),
-        )
-      } else if (selectedSpecialty.length === 2) {
-        doctors.filter(
-          (doctor) =>
-            ((selectedSpecialty[0] === doctor.specialty[0] &&
-              selectedSpecialty[1] === doctor.specialty[1]) ||
-              (selectedSpecialty[0] === doctor.specialty[1] &&
-                selectedSpecialty[1] === doctor.specialty[0])) &&
-            filteredList.push(doctor),
-        )
-      }
-      if (filteredList) setDoctorsList(filteredList)
-      else setDoctorFound(false)
-    } else {
-      setDoctorFound(true)
-      setDoctorsList(doctors)
-    }
-    // eslint-disable-next-line
-  }, [selectedSpecialty])
-
-  const handleCheckBoxSpecialty = (e, { value, checked }) => {
-    let specialty = [...selectedSpecialty]
-    if (checked) {
-      specialty.push(value)
-      setSelectedSpecialty(specialty)
-    } else {
-      let index
-      specialty.filter((specialty, i) =>
-        specialty === value ? (index = i) : '',
-      )
-      specialty.splice(index, 1)
-      setSelectedSpecialty(specialty)
-    }
-  }
-
-  const handleSliderChange = (value) => {
-    setExperienceRange(value)
-  }
-
   const handleGoBack = (page) => {
     if (midEntry === ' active' && page !== 1) {
       setPageNumber(page)
@@ -177,62 +138,22 @@ export const Doctors = () => {
     }
   }
 
+  const addDoctor = async () => {
+    await setDoctorData()
+    showSuccess('Doctor has been successfully added!')
+  }
+
   return (
     <div className="doctors-list">
       <Container>
         <Grid>
-          {/* <Grid.Column computer={5}>
-                        <p className='main-text text'>Speciality</p>
-                        {specialties.length ?
-                            <div className='filter-area'>
-                                {
-                                    specialties.map(specialty => <Checkbox
-                                        value={specialty}
-                                        onChange={handleCheckBoxSpecialty}
-                                        key={specialty}
-                                        label={specialty} />)
-                                }
-                            </div> :
-                            <div className='filter-area'>
-                                <Checkbox disabled label='Loading...' />
-                                <Checkbox disabled label='Loading...' />
-                                <Checkbox disabled label='Loading...' />
-                            </div>}
-                        <p className='main-text text'>Gender</p>
-                        <div className='filter-area'>
-                            <Checkbox label='No Preference' />
-                            <Checkbox label='Male' />
-                            <Checkbox label='Female' />
-                        </div>
-                        <p className='main-text text'>Years of Experience</p>
-                        {doctorsList.length ? 
-                            <div className='filter-area slider-holder'>
-                                <Range
-                                    className='slider'
-                                    defaultValue={experienceRange}
-                                    pushable={true}
-                                    min={1}
-                                    max={15}
-                                    allowCross={false}
-                                    trackStyle={[{ backgroundColor: '#00acb1' }]}
-                                    handleStyle={[{borderColor: '#00acb1', borderWidth: '1px'}, {borderColor: '#00acb1', borderWidth: '1px'}]}
-                                    onChange={(e) => handleSliderChange(e)}
-                                />
-                                <p className='main-text slider-text'>
-                                        {experienceRange[0] === 1 ?
-                                        experienceRange[0] + ' Year' :
-                                        experienceRange[0] + ' Years'} - {experienceRange[1]} Years
-                                </p>
-                            </div> :
-                            <div className='filter-area slider-holder'> 
-                                <p className='main-text slider-text'>
-                                        (..) Years - (..) Years
-                                </p>
-                            </div>}
-                    </Grid.Column> */}
-            <Grid.Column c></Grid.Column>
-          <Grid.Column computer={2}></Grid.Column>
-          <Grid.Column computer={ 12 }>
+          <Grid.Column computer={2}>
+            {/* <Button className="btn-secondary" onClick={addDoctor}>
+              <p>Add Doctor</p>&nbsp;&nbsp;
+              <Icon name="user doctor" size="large" />
+            </Button> */}
+          </Grid.Column>
+          <Grid.Column computer={12}>
             <div className="top-sort">
               <p className="main-text text">
                 {doctorsList.length
