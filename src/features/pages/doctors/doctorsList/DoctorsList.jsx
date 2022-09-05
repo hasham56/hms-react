@@ -9,8 +9,6 @@ export const DoctorsList = ({ doctorsList }) => {
     history.push(`/doctors/${doctor.id}`)
   }
 
-  const handleAddToFavourites = () => {}
-
   const toReviews = () => {}
 
   return (
