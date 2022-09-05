@@ -1,5 +1,5 @@
-import React, { useEffect, useState, forwardRef } from 'react'
-import { useParams } from 'react-router'
+import React, { useEffect, useState } from 'react'
+import { useHistory, useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { WrongURL } from '../../../wrongURL/WrongURL'
 import {
@@ -18,11 +18,49 @@ import {
 } from '../../../../app/firestore/firebaseStore'
 import moment from 'moment'
 import ContentLoader from 'react-content-loader'
-import DatePicker from 'react-datepicker'
+import { toast, Slide } from 'react-toastify'
+import { setAppointment } from '../../../../app/firestore/firebaseStore'
+import emailjs from '@emailjs/browser'
+// import DatePicker from 'react-datepicker'
 
 export const DoctorDetail = () => {
+  const showError = (message) => {
+    toast.error(message, {
+      position: 'bottom-center',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      transition: Slide,
+      theme: 'colored',
+      pauseOnFocusLoss: false,
+    })
+  }
+
+  const showSuccess = (message) => {
+    toast.success(message, {
+      position: 'bottom-center',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      transition: Slide,
+      theme: 'colored',
+      pauseOnFocusLoss: false,
+    })
+  }
+
   const { id } = useParams()
+
+  const history = useHistory()
+
   const { doctors } = useSelector((state) => state.doctors)
+  const { authenticated } = useSelector((state) => state.auth)
+  const { currentUserProfile } = useSelector((state) => state.profile)
 
   const [doctor, setDoctor] = useState({})
   const [hospital, setHospital] = useState({})
@@ -32,12 +70,8 @@ export const DoctorDetail = () => {
   const [showMore, setShowMore] = useState(false)
   const [showReviews, setShowReviews] = useState({})
 
-  const CustomDateInput = forwardRef(({ value, onClick }, ref) => (
-    <Input className="example-custom-input" onClick={onClick} ref={ref}>
-      {value}
-    </Input>
-  ))
-  const [startDate, setStartDate] = useState(new Date())
+  const [date, setDate] = useState(null)
+  const [time, setTime] = useState(null)
 
   useEffect(() => {
     doctors.map((doctor) => (doctor.id === id ? setDoctor(doctor) : ''))
@@ -81,6 +115,65 @@ export const DoctorDetail = () => {
   const handleShowMore = () => {
     if (showMore) setShowMore(false)
     else setShowMore(true)
+  }
+
+  const bookAppointment = async (doctor, profile) => {
+    if (date === null) return
+    if (time === null) return
+
+    const status = localStorage.getItem('status')
+    if (status === 'pending') {
+      showError('You are not allowed to have multiple apointments per day.')
+      return
+    }
+
+    const doctorId = doctor.id
+    const { name, hospital } = doctor
+    const hospitalId = hospital.id
+    const hospitalName = hospital.name
+
+    const { id, displayName } = profile
+
+    const data = {
+      doctorId,
+      doctorName: name,
+      hospitalId,
+      hospitalName,
+      userId: id,
+      username: displayName,
+      status: 'pending',
+    }
+
+    try {
+      await setAppointment(data)
+
+      const message = `Appointment has been successfully Booked with ${name} for ${date} @ ${time}`
+
+      emailjs
+        .send(
+          'service_8j3fgzo',
+          'template_5dk4uxn',
+          {
+            username: displayName,
+            message,
+          },
+          'e8PsMWCi4XsmDeihU',
+        )
+        .then(
+          (result) => {
+            console.log(result.text)
+          },
+          (error) => {
+            console.log(error.text)
+          },
+        )
+      localStorage.setItem('status', 'pending')
+      showSuccess(message)
+
+      history.push('/profile')
+    } catch (err) {
+      showError(`Some Error Occured!`)
+    }
   }
 
   if (doctors.length === 0) return <WrongURL />
@@ -525,16 +618,25 @@ export const DoctorDetail = () => {
                   <p className="primary-text heading">Booking Summary</p>
                 </div>
                 <Label content="Date" />
-                {/* <Input type='date' /> */}
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  customInput={<CustomDateInput />}
+                <Input
+                  type="date"
+                  disabled={!authenticated}
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                 />
                 <Label content="Time" />
-                <Input type="time" />
+                <Input
+                  type="time"
+                  disabled={!authenticated}
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                />
                 <hr />
-                <Button className="btn-secondary">
+                <Button
+                  className="btn-secondary"
+                  onClick={() => bookAppointment(doctor, currentUserProfile)}
+                  disabled={!authenticated}
+                >
                   <p>
                     Book Appointment&emsp;
                     <Icon name="long arrow alternate right" size="large" />

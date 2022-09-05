@@ -1,8 +1,10 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 
 export const RecentAppointments = () => {
+  const [appointments, setAppointments] = useState(null)
 
-    return (
-        <h1>Recent Appointments</h1>
-    )
+  useEffect(() => {}, [])
+
+  return <div className="recent_appointments"></div>
 }

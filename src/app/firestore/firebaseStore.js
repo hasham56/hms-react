@@ -14,6 +14,10 @@ export const setUserProfileData = ( user ) => {
     } )
 }
 
+export const setAppointment = async ( data ) => {
+    return db.collection( 'appointments' ).doc( data.userId ).set( data )
+}
+
 export const getUserProfile = ( userId ) => {
     return db.collection( 'users' ).doc( userId )
 }

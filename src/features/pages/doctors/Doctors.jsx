@@ -167,18 +167,6 @@ export const Doctors = () => {
                       } of ${doctorsList.length} Results`
                   : 'Loading...'}
               </p>
-              <Dropdown
-                text="Sort by&emsp;"
-                icon="angle down"
-                labeled={true}
-                button
-                className="push"
-              >
-                <Dropdown.Menu className="dropdown">
-                  <Dropdown.Item className="item">Name</Dropdown.Item>
-                  <Dropdown.Item className="item">Age</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
             </div>
 
             {doctorsList.length ? (

@@ -9,8 +9,6 @@ export const DoctorsList = ({ doctorsList }) => {
     history.push(`/doctors/${doctor.id}`)
   }
 
-  const toReviews = () => {}
-
   return (
     <Grid className="doctors">
       {doctorsList.map((doctor) => (
@@ -41,11 +39,6 @@ export const DoctorsList = ({ doctorsList }) => {
                 content="View More"
                 onClick={() => handleViewMore(doctor)}
               />
-              {/* <Button
-                className="btn-primary favourite-btn"
-                icon="heart outline"
-                onClick={() => handleAddToFavourites()}
-              /> */}
             </div>
           </Grid.Column>
           <Grid.Column className="portion review" computer={5}>
@@ -70,14 +63,54 @@ export const DoctorsList = ({ doctorsList }) => {
                   }`,
               )}
             </p>
-            <div onClick={() => toReviews()} className="stars">
-              <Icon className="star" name="star" />
-              <Icon className="star" name="star" />
-              <Icon className="star" name="star" />
-              <Icon className="star" name="star" />
-              <Icon className="star outline" name="star" />
+            <div className="stars">
+              <Icon
+                className={
+                  'star' +
+                  (1 <= Math.floor(doctor.reviews.averageRating)
+                    ? ''
+                    : ' outline')
+                }
+                name="star"
+              />
+              <Icon
+                className={
+                  'star' +
+                  (2 <= Math.floor(doctor.reviews.averageRating)
+                    ? ''
+                    : ' outline')
+                }
+                name="star"
+              />
+              <Icon
+                className={
+                  'star' +
+                  (3 <= Math.floor(doctor.reviews.averageRating)
+                    ? ''
+                    : ' outline')
+                }
+                name="star"
+              />
+              <Icon
+                className={
+                  'star' +
+                  (4 <= Math.floor(doctor.reviews.averageRating)
+                    ? ''
+                    : ' outline')
+                }
+                name="star"
+              />
+              <Icon
+                className={
+                  'star' +
+                  (5 <= Math.floor(doctor.reviews.averageRating)
+                    ? ''
+                    : ' outline')
+                }
+                name="star"
+              />
               <p className="main-text" style={{ fontSize: '9pt' }}>
-                &emsp;(38)
+                &emsp;({doctor.reviews.totalReviews})
               </p>
             </div>
           </Grid.Column>

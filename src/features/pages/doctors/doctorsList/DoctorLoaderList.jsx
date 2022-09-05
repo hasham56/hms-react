@@ -198,11 +198,6 @@ export const DoctorLoaderListEntry = () => {
               content="View More"
               disabled
             />
-            <Button
-              className="btn-primary favourite-btn"
-              icon="heart outline"
-              disabled
-            />
           </div>
         </Grid.Column>
         <Grid.Column

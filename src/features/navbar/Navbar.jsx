@@ -100,12 +100,6 @@ export const Navbar = () => {
               <Dropdown.Item className="item" as={NavLink} to="/profile">
                 Profile
               </Dropdown.Item>
-              <Dropdown.Item className="item" as={NavLink} to="/appointments">
-                Appt. History
-              </Dropdown.Item>
-              <Dropdown.Item className="item" as={NavLink} to="/favourite">
-                Favourites
-              </Dropdown.Item>
               <Dropdown.Item className="item" onClick={() => handleSignOut()}>
                 Logout
               </Dropdown.Item>
