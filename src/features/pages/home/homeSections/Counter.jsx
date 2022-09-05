@@ -15,9 +15,9 @@ export const Counter = () => {
           <Grid.Row>
             <Grid.Column width={10}>
               <p className="primary-text services-main-text">
-                Praesent tempor dictum
+                It's about time
                 <br />
-                tellus ut molestie
+                Land as an employee
               </p>
             </Grid.Column>
             <Grid.Column width={6}>
@@ -45,9 +45,10 @@ export const Counter = () => {
                   </div>
                 </Grid.Column>
                 <Grid.Column width={11} className="services-text-portion">
-                  <p className="secondary-text services-text">Therapiya</p>
+                  <p className="secondary-text services-text">Therapy</p>
                   <p className="main-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                    Online therapy involves remote therapy sessions that you
+                    attend via telephone, video calls, chat rooms, or email.
                   </p>
                 </Grid.Column>
               </Grid>
@@ -69,7 +70,8 @@ export const Counter = () => {
                 <Grid.Column width={11} className="services-text-portion">
                   <p className="secondary-text services-text">Dentistry</p>
                   <p className="main-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                    Patients Are Our First Priority. Let's Make Your Smile
+                    Brighter! New Patients Welcome.
                   </p>
                 </Grid.Column>
               </Grid>
@@ -91,7 +93,8 @@ export const Counter = () => {
                 <Grid.Column width={11} className="services-text-portion">
                   <p className="secondary-text services-text">Virusology</p>
                   <p className="main-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                    VRS overcome the challenges of virology research, from drug
+                    screening to testing antiviral products.
                   </p>
                 </Grid.Column>
               </Grid>

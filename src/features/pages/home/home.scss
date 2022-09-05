@@ -592,3 +592,20 @@ $fontLarge: 'Heebo', sans-serif;
 .latest-news .news .read-more:hover {
   color: $dark;
 }
+
+@media screen and (max-width: 992px) {
+  .team {
+    padding: 4% 0 8% 0 !important;
+  }
+  
+  .team .teammember {
+    margin: 20px 0 80px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  .team .teammember {
+    margin: 20px 0 80px 0;
+  }
+}

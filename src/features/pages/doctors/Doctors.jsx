@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Range } from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import './doctors.scss'
-import {
-  Container,
-  Grid,
-  Dropdown,
-  Button,
-  Icon,
-} from 'semantic-ui-react'
+import { Container, Grid, Dropdown, Button, Icon } from 'semantic-ui-react'
 import {
   dataFromSnapshot,
   getAllDoctors,

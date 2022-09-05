@@ -42,10 +42,10 @@ export const DoctorsList = ({ doctorsList }) => {
                 onClick={() => handleViewMore(doctor)}
               />
               {/* <Button
-                    className='btn-primary favourite-btn'
-                    icon='heart outline'
-                    onClick={() => handleAddToFavourites()}
-                /> */}
+                className="btn-primary favourite-btn"
+                icon="heart outline"
+                onClick={() => handleAddToFavourites()}
+              /> */}
             </div>
           </Grid.Column>
           <Grid.Column className="portion review" computer={5}>
